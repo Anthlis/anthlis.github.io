@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id="></script><!--UA-149418366-1-->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-number');
+    </script>
+    <meta charset="utf-8">
+    <title>Anthony Lister</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,900;1,400&display=swap" rel="stylesheet">
+
+
+    <!-- blog css -->
+    <link rel="stylesheet" href="/static/css/github-markdown.css">
+    <link rel="stylesheet" href="/static/css/pygments.css">
+    <link rel="stylesheet" href="/static/css/blog.css">
+
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/3811bc512b.js" crossorigin="anonymous"></script>
+    <style>
+        /* .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        } */
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body data-gr-c-s-loaded="true">
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4">
+                    <!--<i class="fab fa-github"></i><a href="https://github.com/anthlis" class="p-2 text-dark">GitHub</a>-->
+                    <a class="blog-header-logo" href="/"><img src="/static/img/logo.jpeg" alt="Logo" style="width:70px; border-radius:10px;">
+  </a>
+                </div>
+                <div class="col-4 text-center">
+                    <a class="blog-header-name text-dark" href="/">Anthony Lister</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <a href="/about/" class="p-2 text-dark float-right">About</a>
+                    <a href="/" class="p-2 text-dark float-right">Blog</a>
+                </div>
+            </div>
+        </header>
+        <!-- <main role="main" class="container"> -->
+        
+<main role="main" clss="container">
+    <div class="row">
+        <div class="col-md-9 blog-main p-4">
+            
+            
+            <div class="blog-post mb-2">
+                <h2 class="blog-post-tile">
+                    
+                    Hello World - A first test post
+                    
+                </h2>
+                <p class="blog-post-meta">April 04, 2020</p>
+                
+                <span class="text-info">
+                <i class="fas fa-tags"></i></span>
+                
+                <a href="/tag/flask/" class="badge badge-info">Flask</a>
+                
+                <a href="/tag/python/" class="badge badge-info">Python</a>
+                
+                <a href="/tag/github/" class="badge badge-info">Github</a>
+                
+                
+                
+                <div  class="markdown-body">
+                <p><p>What if you could ask your web application framework to generate a static set of HTML pages that you could put anywhere you wanted? </p>
+<p>There is an argument for using ready-made software tools rather than reinventing the wheel. I could have used a static-site generator like Pelican or Nicola, but I enjoy programming with Python and Flask and wanted to write a blog that I completely owned, and learned how every bit of code works together coding it all up from scratch. </p>
+<p>This is a static website hosted on GitHub. The page is based on the following tools:</p>
+<ul>
+<li><a href="https://palletsprojects.com/p/flask/">Flask</a>, the microframework used for building sites.</li>
+<li><a href="https://flask-flatpages.readthedocs.io/en/v0.7.1/">Flask-Flatpages</a>, this extension can convert Markdown documents into HTML pages. I'm writing my blog posts in Markdown, a far more convenient format than HTML.</li>
+<li><a href="https://pythonhosted.org/Frozen-Flask/">Frozen-Flask</a>, the extension that generates static pages by analyzing the web application's views (functions responsible for producing a page, or more technically, a HTTP response for a given URL).</li>
+<li><a href="https://getbootstrap.com/">Bootstrap</a> (<a href="https://getbootstrap.com/docs/4.3/examples/blog/">blog template</a>)</li>
+<li><a href="https://python-markdown.github.io/extensions/">Python Markdown Extension</a> (including <a href="https://github.com/mitya57/python-markdown-math">python-markdown-math</a>)</li>
+</ul>
+<p>This blog is inspired by this awesome <a href="https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/">tutorial</a>.</p>
+<p>My code for this flask blog site can be found in this GitHub <a href="https://github.com/anthlis/my_flask_blog">repository</a>. </p></p>
+            </div>
+                
+            </div>
+            <hr>
+            
+        </div>
+        <aside class="col-md-3 blog-sidebar">
+            <div class="p-4">
+                <h4 class="font-italic">Tags</h4>
+                <ol class="list-unstyled mb-0">
+                    
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/markdown/" class="badge badge-info">Markdown<!-- (2)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/cheatsheet/" class="badge badge-info">Cheatsheet<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/flask/" class="badge badge-info">Flask<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/python/" class="badge badge-info">Python<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/github/" class="badge badge-info">Github<!-- (1)--></a>
+                    
+                    
+                </ol>
+            </div>
+            <div class="p-4">
+                <h4 class="font-italic">Archives</h4>
+                <ol class="list-unstyled mb-0">
+                    
+                    
+                    <li><a href="/archive/April%202020/" class="text-dark">April 2020<!-- (3)--></a></li>
+                    
+                    
+                </ol>
+            </div>
+            <div class="p-4">
+                    <h4 class="font-italic">Elsewhere</h4>
+                    <ol class="list-unstyled mb-0">
+                        <a href="https://github.com/Anthlis" target="_blank"><i class="fab fa-github fa-2x p-2 text-dark" title="GitHub"></i></a>
+                        <a href="https://www.linkedin.com/in/anthonylister/" target="_blank"><i class="fab fa-linkedin fa-2x p-2 text-dark" title="LinkedIn"></i></a>
+                        <a href="https://twitter.com/Anthlis" target="_blank"><i class="fab fa-twitter fa-2x p-2 text-dark" title="Twitter"></i></a>
+                        <a href="https://codechalleng.es/profiles/Anthlis" target="_blank"><i class="fab fa-python fa-2x p-2 text-dark" title="PyBites"></i></a>
+                        <a href="https://github.com/Anthlis/100DaysOfSwift" target="_blank"><i class="fab fa-swift fa-2x p-2 text-dark" title="100Days_Swift_Log"></i></a>
+                        <a href="https://www.strava.com/athletes/1753626" target="_blank"><i class="fab fa-strava fa-2x p-2 text-dark" title="Strava Profile"></i></a>
+                        <a href="mailto:antspam27@gmail.com" target="_blank"><i class="fas fa-envelope fa-2x p-2 text-dark" title="Email Me!"></i></a>
+                        <a href="#" target="_blank"><i class="fas fa-rss fa-2x p-2 text-dark" title="RSS Feed"></i></a>
+
+                    </ol>
+                </div>
+            <div class="p-4">
+                <p style="font-size:12px">All rights reserved. <br>Copyright &copy 2020.</p>
+            </div>
+        </aside>
+    </div>
+</main>
+
+        <!-- </main> -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          config: ["MMLorHTML.js"],
+          jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+          extensions: ["MathMenu.js", "MathZoom.js"],
+          TeX: {
+            equationNumbers: {autoNumber: "AMS"}
+          }
+        });
+        </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js">
+    </script>
+</body>
+
+</html>
