@@ -146,7 +146,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="c1"># to load an image from a file, use the open() function in the image module. Note the capitalisation of image here. </span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original.jpg&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -167,7 +167,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 
 
 <p>This is the image I am using for this work (it could be the PyBites corporate aircraft?): </p>
-<p><img alt="title" src="../static/img/water/original.jpg" /></p>
+<p><img alt="title" src="../static/img/water/original_aircraft.jpg" /></p>
 <p>Now we have opened the image in Python, let's inspect its image details from the object attributes:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># The file format of the source file:</span>
 <span class="k">print</span><span class="p">((</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">))</span> <span class="c1"># Output: JPEG</span>
@@ -256,7 +256,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 <p>First we'll open the two images. Then make a copy of the original which we'll modify. Then code where we want the PyBites logo to go on the working image, paste it using the paste() function (easy as that!) and save our work:</p>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original.jpg&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">)</span>
 <span class="n">logo</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
 
 <span class="n">image_copy</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -279,7 +279,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 <p>So let's modify the paste as below to get a pasted logo with transparent pixels. </p>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original.jpg&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">)</span>
 <span class="n">logo</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
 
 <span class="n">image_copy</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -326,7 +326,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">create_watermark</span><span class="p">(</span><span class="s1">&#39;original.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;original_final_watermarked.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
+    <span class="n">create_watermark</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;original_final_watermarked.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
 </pre></div>
 
 
