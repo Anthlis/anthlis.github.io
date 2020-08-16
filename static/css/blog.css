@@ -6,9 +6,10 @@
   }
   
   .blog-header-name {
-    font-family: 'Russo One', sans-serif;
+    font-family: 'Fredoka One', cursive;
     font-size: 30px;
   }
+
   
   .blog-header-name:hover {
     text-decoration: none;
