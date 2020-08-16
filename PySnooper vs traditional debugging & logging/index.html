@@ -1,0 +1,496 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M6NVJ7H');</script>
+    <!-- End Google Tag Manager -->
+
+    </script>
+    <meta charset="utf-8">
+    <title>Ant's Adventures In Python</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <!-- google fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,900;1,400&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <!-- blog css -->
+    <link rel="stylesheet" href="/static/css/github-markdown.css">
+    <link rel="stylesheet" href="/static/css/pygments.css">
+    <link rel="stylesheet" href="/static/css/blog.css">
+
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/3811bc512b.js" crossorigin="anonymous"></script>
+    <style>
+        /* .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        } */
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body data-gr-c-s-loaded="true">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6NVJ7H"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4">
+                    <!--<i class="fab fa-github"></i><a href="https://github.com/anthlis" class="p-2 text-dark">GitHub</a>-->
+                    <a class="blog-header-logo" href="/"><img src="/static/img/logo.jpeg" alt="Logo" style="width:70px; border-radius:10px;">
+  </a>
+                </div>
+                <div class="col-4 text-center">
+                    <a class="blog-header-name text-dark" href="/">Ant's Adventures In Python</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <a href="/about/" class="p-2 text-dark float-right">About</a>
+                    <a href="/" class="p-2 text-dark float-right">Blog</a>
+                    <a href="/reading/" class="p-2 text-dark float-right">Reading</a>
+                </div>
+            </div>
+        </header>
+        <!-- <main role="main" class="container"> -->
+        
+<main role="main" clss="container">
+    <div class="row">
+        <div class="col-md-9 blog-main p-4">
+            
+            
+            <div class="blog-post mb-2">
+                <h2 class="blog-post-tile">
+                    
+                    PySnooper vs traditional debugging &amp; logging
+                    
+                </h2>
+                <p class="blog-post-meta">August 16, 2020</p>
+                
+                <span class="text-info">
+                <i class="fas fa-tags"></i></span>
+                
+                <a href="/tag/python/" class="badge badge-info">Python</a>
+                
+                <a href="/tag/debugging/" class="badge badge-info">Debugging</a>
+                
+                <a href="/tag/logging/" class="badge badge-info">Logging</a>
+                
+                
+                
+                <div  class="markdown-body">
+                <p><h2 id="pysnooper-vs-traditional-debugging-logging">PySnooper vs traditional debugging &amp; logging</h2>
+<p>This article is a look at PySnooper and a revision of debugging and logging in Python. I use a simple algorithm to determine if a number is an Armstrong number type or not.</p>
+<p>I was intrigued to hear about PySnooper on episode 185 of the Python Bytes podcast <a href="https://pythonbytes.fm/episodes/show/185/this-code-is-snooping-on-you-a-good-thing">Python Bytes podcast</a>. It promised a play-by-play log of a function, including which lines ran and when, and exactly when local variables were changed simply by adding just one decorator line to the function. </p>
+<p>I know it's frowned upon to use print statements for debugging, and I do try to use Python's interactive source code debugger, pdb, but it comes with commands I have to remember. Actually, this is a poor excuse, and especially if you use an IDE such as PyCharm which makes debugging so easy! If you're using print statements because you don't know how to use a debugger, that's bad. There's even a case for logging instead of using a debugger sometimes too. E.g. If you do print, consider using a logging function designed for that, rather than just an ordinary print statement.</p>
+<p>The best way to install PySnooper is with Pip: </p>
+<p><code>$ pip install pysnooper</code></p>
+<p>There's also a Conda install with conda-forge too. </p>
+<h3>Armstrong Number's</h3>
+<p>My example will use a function to solve the Armstrong number question: given an integer, determine if it is an armstrong number.</p>
+<p>An armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits.</p>
+<p>a) 153 is an armstrong number. It's a 3 digit number:</p>
+<div class="codehilite"><pre><span></span>(1^3) + (5^3) + (3^3)= 153.
+</pre></div>
+
+
+<p>b) 371 is also an armstrong number.</p>
+<p>c) any single digit numbers (1-9) are armstrong numbers as well.</p>
+<h3>A revision and comparison of debugging and logging techniques.</h3>
+<h4>My original Armstrong number algorithm</h4>
+<p>Here is the code that I'll first demonstrate works with no means of any debugging:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    input: 153</span>
+<span class="sd">    output: True</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">n_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="k">while</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">%</span> <span class="mi">10</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">**</span> <span class="n">n_length</span>
+        <span class="n">temp</span> <span class="o">//=</span> <span class="mi">10</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
+</pre></div>
+
+
+<p>The output is simply: </p>
+<div class="codehilite"><pre><span></span>True
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</pre></div>
+
+
+<p>If this wasn't working, we'd have to inspect the error messages. </p>
+<h4>1. Using print statements</h4>
+<p>This is the same code, but interspersed with a number of simple print statements:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    input: 153</span>
+<span class="sd">    output: True</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">n_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;n_length: {n_length}&quot;</span><span class="p">)</span> <span class="c1"># delete later</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;The starting number is {temp}&quot;</span><span class="p">)</span> <span class="c1"># delete later</span>
+
+    <span class="k">while</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">%</span> <span class="mi">10</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;digit: {digit}&quot;</span><span class="p">)</span> <span class="c1"># delete later</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">**</span> <span class="n">n_length</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;sum: {sum}&quot;</span><span class="p">)</span> <span class="c1"># delete later</span>
+        <span class="n">temp</span> <span class="o">//=</span> <span class="mi">10</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;temp: {temp}&quot;</span><span class="p">)</span> <span class="c1"># delete later</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
+</pre></div>
+
+
+<p>The output of this is quite helpful: </p>
+<div class="codehilite"><pre><span></span>n_length: <span class="m">3</span>
+The starting number is <span class="m">153</span>
+digit: <span class="m">3</span>
+sum: <span class="m">27</span>
+temp: <span class="m">15</span>
+digit: <span class="m">5</span>
+sum: <span class="m">152</span>
+temp: <span class="m">1</span>
+digit: <span class="m">1</span>
+sum: <span class="m">153</span>
+temp: <span class="m">0</span>
+True
+
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</pre></div>
+
+
+<h4>2. Using the PySnooper decorator</h4>
+<p>This is the same code as the original, but using the PySnooper decorator:</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pysnooper</span>
+
+<span class="nd">@pysnooper.snoop</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    input: 153</span>
+<span class="sd">    output: True</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">n_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="k">while</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">%</span> <span class="mi">10</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">**</span> <span class="n">n_length</span>
+        <span class="n">temp</span> <span class="o">//=</span> <span class="mi">10</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
+</pre></div>
+
+
+<p>The output of this is more involved using only one extra line of code (not including the import)!</p>
+<div class="codehilite"><pre><span></span>Source path:... /Users/anthlis/pycharmprojects/pysnooper/arm_3_snoops.py
+Starting var:.. <span class="nv">n</span> <span class="o">=</span> <span class="m">153</span>
+<span class="m">14</span>:55:00.081637 call         <span class="m">5</span> def is_armstrong<span class="o">(</span>n: int<span class="o">)</span> -&gt; bool:
+<span class="m">14</span>:55:00.082160 line        <span class="m">10</span>     <span class="nv">n_length</span> <span class="o">=</span> len<span class="o">(</span>str<span class="o">(</span>n<span class="o">))</span>
+New var:....... <span class="nv">n_length</span> <span class="o">=</span> <span class="m">3</span>
+<span class="m">14</span>:55:00.082252 line        <span class="m">11</span>     <span class="nv">sum</span> <span class="o">=</span> <span class="m">0</span>
+New var:....... <span class="nv">sum</span> <span class="o">=</span> <span class="m">0</span>
+<span class="m">14</span>:55:00.082350 line        <span class="m">12</span>     <span class="nv">temp</span> <span class="o">=</span> n
+New var:....... <span class="nv">temp</span> <span class="o">=</span> <span class="m">153</span>
+<span class="m">14</span>:55:00.082455 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
+<span class="m">14</span>:55:00.082562 line        <span class="m">15</span>         <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
+New var:....... <span class="nv">digit</span> <span class="o">=</span> <span class="m">3</span>
+<span class="m">14</span>:55:00.082650 line        <span class="m">16</span>         <span class="nv">sum</span> <span class="o">+=</span> digit ** n_length
+Modified var:.. <span class="nv">sum</span> <span class="o">=</span> <span class="m">27</span>
+<span class="m">14</span>:55:00.082765 line        <span class="m">17</span>         temp //<span class="o">=</span> <span class="m">10</span>
+Modified var:.. <span class="nv">temp</span> <span class="o">=</span> <span class="m">15</span>
+<span class="m">14</span>:55:00.082875 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
+<span class="m">14</span>:55:00.083132 line        <span class="m">15</span>         <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
+Modified var:.. <span class="nv">digit</span> <span class="o">=</span> <span class="m">5</span>
+<span class="m">14</span>:55:00.083300 line        <span class="m">16</span>         <span class="nv">sum</span> <span class="o">+=</span> digit ** n_length
+Modified var:.. <span class="nv">sum</span> <span class="o">=</span> <span class="m">152</span>
+<span class="m">14</span>:55:00.083507 line        <span class="m">17</span>         temp //<span class="o">=</span> <span class="m">10</span>
+Modified var:.. <span class="nv">temp</span> <span class="o">=</span> <span class="m">1</span>
+<span class="m">14</span>:55:00.083765 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
+<span class="m">14</span>:55:00.083983 line        <span class="m">15</span>         <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
+Modified var:.. <span class="nv">digit</span> <span class="o">=</span> <span class="m">1</span>
+<span class="m">14</span>:55:00.084080 line        <span class="m">16</span>         <span class="nv">sum</span> <span class="o">+=</span> digit ** n_length
+Modified var:.. <span class="nv">sum</span> <span class="o">=</span> <span class="m">153</span>
+<span class="m">14</span>:55:00.084177 line        <span class="m">17</span>         temp //<span class="o">=</span> <span class="m">10</span>
+Modified var:.. <span class="nv">temp</span> <span class="o">=</span> <span class="m">0</span>
+<span class="m">14</span>:55:00.084507 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
+<span class="m">14</span>:55:00.084770 line        <span class="m">19</span>     <span class="k">return</span> <span class="o">(</span><span class="nv">n</span> <span class="o">==</span> sum<span class="o">)</span>
+<span class="m">14</span>:55:00.085044 <span class="k">return</span>      <span class="m">19</span>     <span class="k">return</span> <span class="o">(</span><span class="nv">n</span> <span class="o">==</span> sum<span class="o">)</span>
+Return value:.. True
+Elapsed time: <span class="m">00</span>:00:00.003629
+True
+
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</pre></div>
+
+
+<h4>3. Using the Python's pdb debugger</h4>
+<p>Since Python 3.7, it has been possible to simply enter the debugger by using the built-in function:</p>
+<div class="codehilite"><pre><span></span>breakpoint()
+</pre></div>
+
+
+<p>instead of writing </p>
+<div class="codehilite"><pre><span></span>import pdb; set_trace()
+</pre></div>
+
+
+<p>When the line above is executed, Python stops and waits for you to tell it what to do next. You’ll see a (Pdb) prompt. This means that you’re now paused in the interactive debugger and can enter a command. I tend to only use 'n' to execute the current statement (step over), 'c' to continue execution until a breakpoint is encountered or 'p <em>expr</em>' to print the value of <em>expr</em>. (There are cheatsheets on the interwebs and you can always type 'h' or 'help' for a list of commands to get further help on).</p>
+<p>This uses the same code as the original, but using Python's pdb debugger:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    input: 153</span>
+<span class="sd">    output: True</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">n_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="k">while</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">breakpoint</span><span class="p">()</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">%</span> <span class="mi">10</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">**</span> <span class="n">n_length</span>
+        <span class="n">temp</span> <span class="o">//=</span> <span class="mi">10</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
+</pre></div>
+
+
+<p>The output requires you to instruct the debugger what to do next in terms of stepping through the code: </p>
+<div class="codehilite"><pre><span></span>&gt; /Users/anthlis/pycharmprojects/pysnooper/arm_4_pdb.py<span class="o">(</span><span class="m">12</span><span class="o">)</span>is_armstrong<span class="o">()</span>
+-&gt; <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
+<span class="o">(</span>Pdb<span class="o">)</span> 
+</pre></div>
+
+
+<p>At the command prompt is where you enter the instruction of course. I've chosen to enter 'p' several times...</p>
+<div class="codehilite"><pre><span></span>-&gt; temp //<span class="o">=</span> <span class="m">10</span>
+<span class="o">(</span>Pdb<span class="o">)</span> p digit
+<span class="m">3</span>
+<span class="o">(</span>Pdb<span class="o">)</span> p sum
+<span class="m">27</span>
+<span class="o">(</span>Pdb<span class="o">)</span> p temp
+<span class="m">153</span>
+<span class="o">(</span>Pdb<span class="o">)</span> n
+&gt; /Users/anthlis/pycharmprojects/pysnooper/arm_4_pdb.py<span class="o">(</span><span class="m">10</span><span class="o">)</span>is_armstrong<span class="o">()</span>
+-&gt; <span class="k">while</span> temp &gt; <span class="m">0</span>:
+<span class="o">(</span>Pdb<span class="o">)</span> p digit
+<span class="m">3</span>
+<span class="o">(</span>Pdb<span class="o">)</span> p sum
+<span class="m">27</span>
+<span class="o">(</span>Pdb<span class="o">)</span> p temp
+<span class="m">15</span>
+<span class="o">(</span>Pdb<span class="o">)</span> 
+</pre></div>
+
+
+<p>and so on... </p>
+<h4>4. A revision of Logging</h4>
+<p>I mentioned logging at the start. Logging has its place, but I hardly ever use it, and I think it's because it seemingly takes a lot of effort to set-up initially. Afterall, I just want to fix the code and move on, right? For the most part, I'm writing simple code functions that I can inspect and debug quickly using other means. I suppose logging is useful for code where you don't readily have access to a terminal to inspect values of expressions such as web applications with multiple users, time stamped events or databases maybe? </p>
+<p>I first encountered logging during the Talk Python &amp; PyBites 100 days of code course. Michael Kennedy discussed logging as per the standard library, and then introduced Logbook for simpler logging. This is what I have used here, which needs a pip install. </p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">logbook</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">StreamHandler</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span><span class="o">.</span><span class="n">push_application</span><span class="p">()</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">&#39;Logbook&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    input: 153</span>
+<span class="sd">    output: True</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">n_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="k">while</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">%</span> <span class="mi">10</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">**</span> <span class="n">n_length</span>
+        <span class="n">temp</span> <span class="o">//=</span> <span class="mi">10</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;digit: {digit}, sum: {sum}, temp: {temp}&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
+</pre></div>
+
+
+<p>The ouput produces a simple and tidy log output as shown:</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.927662<span class="o">]</span> INFO: Logbook: digit: <span class="m">3</span>, sum: <span class="m">27</span>, temp: <span class="m">15</span>
+<span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.928117<span class="o">]</span> INFO: Logbook: digit: <span class="m">5</span>, sum: <span class="m">152</span>, temp: <span class="m">1</span>
+<span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.928214<span class="o">]</span> INFO: Logbook: digit: <span class="m">1</span>, sum: <span class="m">153</span>, temp: <span class="m">0</span>
+True
+
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</pre></div>
+
+
+<h3>Conclusion</h3>
+<p>The most obvious case where a debugger is the most useful is if my program crashes. With a debugger I can stop exactly where the problem occurs and inspect some variables to see what's going on.</p>
+<p>On the flip side, sometimes with very complex programs with multiple threads or processes, using a debugger can be a real pain! In that sort of program it's often easiest to print or log things.</p>
+<p>With PySnooper, there is no need to setup a debugger to debug code. And there is no need to delete all the strategically placed print statements either that PySnooper does away with. </p>
+<p>I like PySnooper and will continue to use it in my arsenal to obliterate bugs and crashes in my future code, no matter how hard I try not to let them occur in the first place! </p>
+<p>This was also a useful exercise for me to revisit the use of Logbook and I will try to use this more often too. </p>
+<h3>Useful Links:</h3>
+<p>[1]: <a href="https://github.com/cool-RR/PySnooper">PySnooper on GitHub</a><br />
+[2]: <a href="https://realpython.com/python-debugging-pdb/">Real Python's Python Debugging With Pdb</a><br />
+[3]: <a href="https://www.youtube.com/watch?v=HHrVBKZLolg">"Goodbye Print Statements, Hello Debugger!" - Nina Zakharenko (PyCon AU 2019)</a><br />
+[4]: <a href="https://training.talkpython.fm/courses/details/100-days-of-code-in-python">Talk Python / PyBites 100 days of code</a><br />
+[5]: <a href="https://logbook.readthedocs.io/en/stable/">Logbook for better Python logging</a>  </p>
+<p>Thanks for reading! </p></p>
+            </div>
+                
+            </div>
+            <hr>
+            
+        </div>
+        <aside class="col-md-3 blog-sidebar">
+            <div class="p-4">
+                <h4 class="font-italic">Tags</h4>
+                <ol class="list-unstyled mb-0">
+                    
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/python/" class="badge badge-info">Python<!-- (4)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/markdown/" class="badge badge-info">Markdown<!-- (2)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/pybites/" class="badge badge-info">Pybites<!-- (2)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/cheatsheet/" class="badge badge-info">Cheatsheet<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/flask/" class="badge badge-info">Flask<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/github/" class="badge badge-info">Github<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/images/" class="badge badge-info">Images<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/debugging/" class="badge badge-info">Debugging<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/logging/" class="badge badge-info">Logging<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/code%20club/" class="badge badge-info">Code club<!-- (1)--></a>
+                    
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/communication/" class="badge badge-info">Communication<!-- (1)--></a>
+                    
+                    
+                </ol>
+            </div>
+            <div class="p-4">
+                <h4 class="font-italic">Archives</h4>
+                <ol class="list-unstyled mb-0">
+                    
+                    
+                    <li><a href="/archive/April%202020/" class="text-dark">April 2020<!-- (4)--></a></li>
+                    
+                    <li><a href="/archive/August%202020/" class="text-dark">August 2020<!-- (1)--></a></li>
+                    
+                    <li><a href="/archive/May%202020/" class="text-dark">May 2020<!-- (1)--></a></li>
+                    
+                    
+                </ol>
+            </div>
+            <div class="p-4">
+                    <h4 class="font-italic">Elsewhere</h4>
+                    <ol class="list-unstyled mb-0">
+                        <a href="https://codechalleng.es/profiles/Anthlis" target="_blank"><i class="fab fa-python fa-2x p-2 text-dark" title="PyBites"></i></a>
+                        <a href="https://github.com/Anthlis" target="_blank"><i class="fab fa-github fa-2x p-2 text-dark" title="GitHub"></i></a>
+                        <a href="https://twitter.com/Anthlis" target="_blank"><i class="fab fa-twitter fa-2x p-2 text-dark" title="Twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/anthonylister/" target="_blank"><i class="fab fa-linkedin fa-2x p-2 text-dark" title="LinkedIn"></i></a>
+                        <!-- <a href="https://github.com/Anthlis/100DaysOfSwift" target="_blank"><i class="fab fa-swift fa-2x p-2 text-dark" title="100Days_Swift_Log"></i></a> -->
+                        <!-- <a href="https://www.strava.com/athletes/1753626" target="_blank"><i class="fab fa-strava fa-2x p-2 text-dark" title="Strava Profile"></i></a> -->
+                        <!-- <a href="mailto:antspam27@gmail.com" target="_blank"><i class="fas fa-envelope fa-2x p-2 text-dark" title="Email Me!"></i></a> -->
+                        <!-- <a href="#" target="_blank"><i class="fas fa-rss fa-2x p-2 text-dark" title="RSS Feed"></i></a> -->
+
+                    </ol>
+                </div>
+            <div class="p-4">
+
+                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Anthlis?ref_src=twsrc%5Etfw">Tweets by Anthlis</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+            </div>
+            <div class="p-4">
+                <p style="font-size:12px">All rights reserved. <br>Copyright &copy 2020.</p>
+            </div>
+        </aside>
+    </div>
+</main>
+
+        <!-- </main> -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          config: ["MMLorHTML.js"],
+          jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+          extensions: ["MathMenu.js", "MathZoom.js"],
+          TeX: {
+            equationNumbers: {autoNumber: "AMS"}
+          }
+        });
+        </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js">
+    </script>
+</body>
+
+</html>
