@@ -122,73 +122,73 @@
 <h4>Set-up and install</h4>
 <p>As usual, a virtualenv is created and activated to do our work in. </p>
 <p>Pillow can be installed on most platforms and has been tested for the latest Python version (3.7) across the most commonly used platforms. Simply install Pillow with pip: </p>
-<div class="codehilite"><pre><span></span>(venv) $ pip install pillow
-</pre></div>
+<div class="codehilite"><pre><span></span><code>(venv) $ pip install pillow
+</code></pre></div>
 
 
 <h4>Let's begin...</h4>
 <p>Let's cover off some basic usage of Pillow; opening Images, resizing and saving images. 
 If you want to follow along, find an image that you want to use and keep it handy in the same working directory of your program.py.</p>
 <h4>1) Opening (and saving) images</h4>
-<div class="codehilite"><pre><span></span><span class="c1"># program.py</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># program.py</span>
 
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="c1"># to load an image from a file, use the open() function in the image module. Note the capitalisation of image here. </span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>It's not unreasonable to have expected that to 'open' on your screen, but that's not what is meant here. You can test if the opening of the image in Python was successful by ensuring it returned an image object: </p>
-<div class="codehilite"><pre><span></span><span class="c1"># if successful, should return an Image object:</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>  <span class="c1"># output: &lt;class &#39;PIL.JpegImagePlugin.JpegImageFile&#39;&gt;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c1"># if successful, should return an Image object:</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>  <span class="c1"># output: &lt;class &#39;PIL.JpegImagePlugin.JpegImageFile&#39;&gt;</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span>&lt;class &#39;PIL.JpegImagePlugin.JpegImageFile&#39;&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>&lt;class &#39;PIL.JpegImagePlugin.JpegImageFile&#39;&gt;
+</code></pre></div>
 
 
 <p>Instead, to open, or show, the image on your screen use: </p>
-<div class="codehilite"><pre><span></span><span class="c1"># to actually open and view it.</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># to actually open and view it.</span>
 <span class="n">image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This is the image I am using for this work (it could be the PyBites corporate aircraft?): </p>
 <p><img alt="title" src="../static/img/water/original_aircraft.jpg" /></p>
 <p>Now we have opened the image in Python, let's inspect its image details from the object attributes:</p>
-<div class="codehilite"><pre><span></span><span class="c1"># The file format of the source file:</span>
-<span class="k">print</span><span class="p">((</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">))</span> <span class="c1"># Output: JPEG</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c1"># The file format of the source file:</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">))</span> <span class="c1"># Output: JPEG</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span>JPEG
-</pre></div>
+<div class="codehilite"><pre><span></span><code>JPEG
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="c1"># The pixel format, i.e. RGB</span>
-<span class="k">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c1"># The pixel format, i.e. RGB</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span>RGB
-</pre></div>
+<div class="codehilite"><pre><span></span><code>RGB
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="c1"># Size in pixels</span>
-<span class="k">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Size in pixels</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span>(6000, 4000)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>(6000, 4000)
+</code></pre></div>
 
 
 <p>Ok, let's save the image as something else, while also changing the file format from a JPEG to a PNG format:</p>
-<div class="codehilite"><pre><span></span><span class="c1"># saving an image as a new image; can also change file format i.e. jpg -&gt; png</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># saving an image as a new image; can also change file format i.e. jpg -&gt; png</span>
 <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;new_image.png&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>You should end up with two image files in your working directory: 'original.jpg' and 'new_image.png'. </p>
@@ -196,40 +196,40 @@ If you want to follow along, find an image that you want to use and keep it hand
 <p>Here's where the fun really starts! Of course, it's possible to resize images using Pillow. </p>
 <p>The previous image size was determined to be 6000 pixels x 4000 pixels. Let's change that to make the new_image.png smaller. Our watermarking will probably need to be smaller than the image to be watermarked. </p>
 <p>To resize an image, we can pass a 2 integer tuple describing width and height to resize().</p>
-<div class="codehilite"><pre><span></span><span class="c1"># lets start to use and modify new_image.png</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># lets start to use and modify new_image.png</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;new_image.png&#39;</span><span class="p">)</span>
 <span class="c1">#resizing it now to 400 pixels x 400 pixels:</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
 <span class="c1"># save it as new_image_400x400 and as a JPG file:</span>
 <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;new_image_400x400.jpg&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">new_image_400x400</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_image_400x400</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span>(400, 400)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>(400, 400)
+</code></pre></div>
 
 
 <p>Let's look at our new image 'new_image_400x400.jpg'</p>
-<div class="codehilite"><pre><span></span><span class="n">new_image_400x400</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># will open the image on your screen</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">new_image_400x400</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># will open the image on your screen</span>
+</code></pre></div>
 
 
 <p>This is what it looks like. Does it look right to you? </p>
 <p><img alt="title" src="../static/img/water/new_image_400x400.jpg" /></p>
 <p>The thing to beware of using the resize() function is that is doesn't protect your aspect ratio. It's also therefore possible to blow out the image by making it bigger than the original and lose definition causing it to look a bit fuzzy. </p>
 <p>Fortunately, this is where the thumbnail() function comes in handy!</p>
-<div class="codehilite"><pre><span></span><span class="c1"># to keep aspect ratios instead, use thumbnail(),</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># to keep aspect ratios instead, use thumbnail(),</span>
 <span class="c1"># takes 2 ints max_width x max_height of the thumbnail.</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;new_image.png&#39;</span><span class="p">)</span>
 <span class="n">image</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
 <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;image_thumbnail.jpg&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span>(400, 266)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>(400, 266)
+</code></pre></div>
 
 
 <p>While we have just shrunk our image, another positive of thumbnail is that it cannot upscale the image above the pixel size of the original - no blow out! I.e. setting a pixel size of 8000 x 8000 pixels results in an image size of 6000 x 4000 pixels as per the original dimensions. </p>
@@ -243,7 +243,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 <p>This is the PyBites logo from the #100DaysOfCode course, that I modified with a transparent background using the method described above. <img alt="title" src="../static/img/water/pybites_trans.png" /></p>
 <p>Let's code! </p>
 <p>First we'll open the two images. Then make a copy of the original which we'll modify. Then code where we want the PyBites logo to go on the working image, paste it using the paste() function (easy as that!) and save our work:</p>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">)</span>
 <span class="n">logo</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
@@ -256,7 +256,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 
 <span class="n">image_copy</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;pasted_image.jpg&#39;</span><span class="p">)</span>
 <span class="n">image_copy</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Here's the result: </p>
@@ -266,7 +266,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 <p>Pasting an RGBA image and also using it as the mask will paste the opaque portion of the image but not its transparent background.</p>
 <p>We need to pass in a third argument to the paste() function. This argument is the transparency mask Image object. A mask is an Image object where the alpha value is significant, but its green, red, and blue values are ignored. If a mask is given, paste() updates only the regions indicated by the mask.   </p>
 <p>So let's modify the paste as below to get a pasted logo with transparent pixels. </p>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">)</span>
 <span class="n">logo</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
@@ -279,7 +279,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="n">image_copy</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">logo</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">logo</span><span class="p">)</span>
 
 <span class="n">image_copy</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;pasted_image_with_trans_backgnd.jpg&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This is better! (Although we should have resized perhaps!)</p>
@@ -289,7 +289,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 <p>As mentioned, the Pillow documentation is really quite good. Advanced users will want to understand how to add/replace alpha layers, or convert to black &amp; white from RGB colours, and change many other parameters. </p>
 <p>I encourage you to read the documentation and have a play! </p>
 <p>The following code is a variant of the work above. It pastes multiple copies of the PyBites logo watermark all over the original image. While the PyBites logo is a bit of an excessive watermark it demonstrates that a formatted text, possibly with an accompanying logo, can be splashed all over an image you might want to protect online from being copied. This might prevent the image being copied and claimed as someone else's work, whereas a single watermarked image could be cropped out of the original picture. </p>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 
 <span class="k">def</span> <span class="nf">create_watermark</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">final_image_path</span><span class="p">,</span> <span class="n">watermark</span><span class="p">):</span>
@@ -316,7 +316,7 @@ If you want to follow along, find an image that you want to use and keep it hand
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">create_watermark</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;original_final_watermarked.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This results in the following output:</p>

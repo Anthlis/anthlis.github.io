@@ -114,7 +114,7 @@
                 <p><p>This post shows that this site is able to render markdown files almost identically to the Markdown Cheatsheet. </p>
 <h2 id="headers">Headers</h2>
 <p class="alert alert-info" role="alert">We force the the base level of header's to be 2 so that <code># H1</code> will be rendered as <code>&lt;h2&gt;&lt;/h2&gt;</code> and thus has a smaller font than the article title. This bootstrap alert message is supported by <code>markdown.extension.attr_list</code>.</p>
-<div class="codehilite"><pre><span></span># H1
+<div class="codehilite"><pre><span></span><code># H1
 ## H2
 ### H3
 #### H4
@@ -128,7 +128,7 @@ Alt-H1
 
 Alt-H2
 ------
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="h1">H1</h2>
@@ -142,14 +142,14 @@ Alt-H2
 <h3>Alt-H2</h3>
 <h2 id="emphasis">Emphasis</h2>
 <p class="alert alert-info" role="alert">We use html strik tag, for example, <code>&lt;s&gt;&lt;/s&gt;</code> for strikethrough while <code>~~</code> does not work here. Code highlight is suppoted by <code>markdown.extensions.codehilite</code> and <code>markdown.extensions.fenced_code</code>.</p>
-<div class="codehilite"><pre><span></span>Emphasis, aka italics, with *asterisks* or _underscores_.
+<div class="codehilite"><pre><span></span><code>Emphasis, aka italics, with *asterisks* or _underscores_.
 
 Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
 Combined emphasis with **asterisks and _underscores_**.
 
 <span class="hll">Strikethrough uses two tildes. &lt;s&gt;Scratch this.&lt;/s&gt;
-</span></pre></div>
+</span></code></pre></div>
 
 
 <p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
@@ -158,7 +158,7 @@ Combined emphasis with **asterisks and _underscores_**.
 <p>Strikethrough uses two tildes. <s>Scratch this.</s></p>
 <h2 id="lists">Lists</h2>
 <p class="alert alert-info" role="alert">We need one blank line before and the other after the first unordered sub-list. We also require four spaces for the paragraphs within an list item. The numbers of the ordered list are required as we use <code>markdown.extensions.sane_lists</code>. (In this example, leading and trailing spaces are shown with with dots: ⋅)</p>
-<div class="codehilite"><pre><span></span>1. First ordered list item
+<div class="codehilite"><pre><span></span><code>1. First ordered list item
 2. Another item
 
 <span class="hll">*  Unordered sub-list. 
@@ -176,7 +176,7 @@ Combined emphasis with **asterisks and _underscores_**.
 * Unordered list can use asterisks
 - Or minuses
 + Or pluses
-</pre></div>
+</code></pre></div>
 
 
 <ol>
@@ -203,7 +203,7 @@ Note that this line is separate, but within the same paragraph.<br />
 <li>Or pluses</li>
 </ul>
 <h2 id="links">Links</h2>
-<div class="codehilite"><pre><span></span>[I&#39;m an inline-style link](https://www.google.com)
+<div class="codehilite"><pre><span></span><code>[I&#39;m an inline-style link](https://www.google.com)
 
 [I&#39;m an inline-style link with title](https://www.google.com &quot;Google&#39;s Homepage&quot;)
 
@@ -224,7 +224,7 @@ Some text to show that the reference links can follow later.
 [arbitrary case-insensitive reference text]: https://www.mozilla.org
 [1]: http://slashdot.org
 [link text itself]: http://www.reddit.com
-</pre></div>
+</code></pre></div>
 
 
 <p><a href="https://www.google.com">I'm an inline-style link</a></p>
@@ -238,7 +238,7 @@ http://www.example.com or <a href="http://www.example.com">http://www.example.co
 example.com (but not on Github, for example).</p>
 <p>Some text to show that the reference links can follow later.</p>
 <h2 id="images">Images</h2>
-<div class="codehilite"><pre><span></span>Here&#39;s our logo (hover to see the title text):
+<div class="codehilite"><pre><span></span><code>Here&#39;s our logo (hover to see the title text):
 
 Inline-style: 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 1&quot;)
@@ -247,7 +247,7 @@ Reference-style:
 ![alt text][logo]
 
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 2&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>Here's our logo (hover to see the title text):</p>
@@ -256,12 +256,12 @@ Reference-style:
 <p>Reference-style: 
 <img alt="alt text" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" title="Logo Title Text 2" /></p>
 <h2 id="code-and-syntax-highlighting">Code and Syntax Highlighting</h2>
-<div class="codehilite"><pre><span></span>Inline `code` has `back-ticks around` it.
-</pre></div>
+<div class="codehilite"><pre><span></span><code>Inline `code` has `back-ticks around` it.
+</code></pre></div>
 
 
 <p>Inline <code>code</code> has <code>back-ticks around</code> it.</p>
-<div class="codehilite"><pre><span></span>```javascript
+<div class="codehilite"><pre><span></span><code>```javascript
 var s = &quot;JavaScript syntax highlighting&quot;;
 alert(s);
 ```
@@ -275,26 +275,26 @@ print s
 No language indicated, so no syntax highlighting. 
 But let&#39;s throw in a &lt;b&gt;tag&lt;/b&gt;.
 ```
-</pre></div>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Python syntax highlighting&quot;</span>
-<span class="k">print</span> <span class="n">s</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Python syntax highlighting&quot;</span>
+<span class="nb">print</span> <span class="n">s</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span>No language indicated, so no syntax highlighting. 
+<div class="codehilite"><pre><span></span><code>No language indicated, so no syntax highlighting. 
 But let&#39;s throw in a &lt;b&gt;tag&lt;/b&gt;.
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="tables">Tables</h2>
-<div class="codehilite"><pre><span></span>Colons can be used to align columns.
+<div class="codehilite"><pre><span></span><code>Colons can be used to align columns.
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -310,7 +310,7 @@ Markdown | Less | Pretty
 --- | --- | ---
 *Still* | `renders` | **nicely**
 1 | 2 | 3
-</pre></div>
+</code></pre></div>
 
 
 <p>Colons can be used to align columns.</p>
@@ -365,13 +365,13 @@ raw Markdown line up prettily. You can also use inline Markdown.</p>
 </tbody>
 </table>
 <h2 id="blockquotes">Blockquotes</h2>
-<div class="codehilite"><pre><span></span>&gt; Blockquotes are very handy in email to emulate reply text.
+<div class="codehilite"><pre><span></span><code>&gt; Blockquotes are very handy in email to emulate reply text.
 &gt; This line is part of the same quote.
 
 Quote break.
 
 &gt; This is a very long line that will still be quoted properly when it wraps. Oh boy let&#39;s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
-</pre></div>
+</code></pre></div>
 
 
 <blockquote>
@@ -383,14 +383,14 @@ This line is part of the same quote.</p>
 <p>This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can <em>put</em> <strong>Markdown</strong> into a blockquote. </p>
 </blockquote>
 <h2 id="inline-html">Inline HTML</h2>
-<div class="codehilite"><pre><span></span>&lt;dl&gt;
+<div class="codehilite"><pre><span></span><code>&lt;dl&gt;
   &lt;dt&gt;Definition list&lt;/dt&gt;
   &lt;dd&gt;Is something people use sometimes.&lt;/dd&gt;
 
   &lt;dt&gt;Markdown in HTML&lt;/dt&gt;
   &lt;dd&gt;Does *not* work **very** well. Use HTML &lt;em&gt;tags&lt;/em&gt;.&lt;/dd&gt;
 &lt;/dl&gt;
-</pre></div>
+</code></pre></div>
 
 
 <dl>
@@ -402,7 +402,7 @@ This line is part of the same quote.</p>
 </dl>
 
 <h2 id="horizontal-rule">Horizontal Rule</h2>
-<div class="codehilite"><pre><span></span>Three or more...
+<div class="codehilite"><pre><span></span><code>Three or more...
 
 ---
 
@@ -415,7 +415,7 @@ Asterisks
 ___
 
 Underscores
-</pre></div>
+</code></pre></div>
 
 
 <p>Three or more...</p>
@@ -426,13 +426,13 @@ Underscores
 <hr />
 <p>Underscores</p>
 <h2 id="line-breaks">Line Breaks</h2>
-<div class="codehilite"><pre><span></span>Here&#39;s a line for us to start with.
+<div class="codehilite"><pre><span></span><code>Here&#39;s a line for us to start with.
 
 This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
 
 This line is also a separate paragraph, but...⋅⋅
 This line is only separated by a single newline, so it&#39;s a separate line in the *same paragraph*.
-</pre></div>
+</code></pre></div>
 
 
 <p>Here's a line for us to start with.</p>
@@ -441,17 +441,17 @@ This line is only separated by a single newline, so it&#39;s a separate line in 
 This line is only separated by a single newline, so it's a separate line in the <em>same paragraph</em>.</p>
 <h2 id="youtube-videos">YouTube Videos</h2>
 <p class="alert alert-danger" role="alert">Warning: head phone on before you click the video...</p>
-<div class="codehilite"><pre><span></span>&lt;a href=&quot;https://www.youtube.com/watch?v=KolfEhV-KiA
+<div class="codehilite"><pre><span></span><code>&lt;a href=&quot;https://www.youtube.com/watch?v=KolfEhV-KiA
 &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/KolfEhV-KiA/0.jpg&quot; 
 alt=&quot;IMAGE ALT TEXT HERE&quot; width=&quot;240&quot; height=&quot;180&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;
-</pre></div>
+</code></pre></div>
 
 
 <p><a href="https://www.youtube.com/watch?v=KolfEhV-KiA
 " target="_blank"><img src="http://img.youtube.com/vi/KolfEhV-KiA/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></p>
-<div class="codehilite"><pre><span></span>[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/KolfEhV-KiA/0.jpg)](https://www.youtube.com/watch?v=KolfEhV-KiA)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/KolfEhV-KiA/0.jpg)](https://www.youtube.com/watch?v=KolfEhV-KiA)
+</code></pre></div>
 
 
 <p><a href="https://www.youtube.com/watch?v=KolfEhV-KiA"><img alt="IMAGE ALT TEXT HERE" src="http://img.youtube.com/vi/KolfEhV-KiA/0.jpg" /></a></p></p>
