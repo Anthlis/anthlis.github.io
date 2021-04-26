@@ -14,7 +14,6 @@
 
     <!-- Custom styles for this template -->
     <!-- google fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,900;1,400&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
@@ -75,7 +74,6 @@
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a href="/about/" class="p-2 text-dark float-right">About</a>
                     <a href="/" class="p-2 text-dark float-right">Blog</a>
-                    <a href="/reading/" class="p-2 text-dark float-right">Reading</a>
                 </div>
             </div>
         </header>
@@ -109,20 +107,19 @@
                 <p><p>This article was originally posted by PyBites <a href="https://pybit.es/pillow-intro.html">here</a> on 24 June 2019. </p>
 <h2 id="watermarking-photos-i-can-do-that-in-python">Watermarking photos? "I can do that in Python!"</h2>
 <p>My wife is setting up a business from home and wanted to protect photos of her work submitted to social media sites and the web in general. "I can do that using Python!", I exclaimed, thinking I had seen a tutorial showing how ages ago. Laptop open, I set to work and found my bookmarked tutorial. It was using OpenCV2 and even after ~70 odd days of my #100DaysOfCode journey, I didn't really understand it well enough to configure it myself if I had to make changes. (OpenCV is on my list of things to do after my #100Days). I remembered reading about Pillow, or PIL as it is sometimes known, and started to read the docs for it. Challenge to myself accepted!</p>
-<h4>Pillow or PIL</h4>
+<h4 id="pillow-or-pil">Pillow or PIL</h4>
 <p>The Python Image Library (PIL), although not in the standard library, has been Python’s best-known 2-D image processing library. It predated installers such as pip, so a “friendly fork” called Pillow was created. Although the package is called Pillow, you import it as PIL to make it compatible with the older PIL.</p>
 <p>Pillow’s documentation is good, check it out here: https://pillow.readthedocs.io/en/stable/</p>
-<h4>Set-up and install</h4>
+<h4 id="set-up-and-install">Set-up and install</h4>
 <p>As usual, a virtualenv is created and activated to do our work in. </p>
 <p>Pillow can be installed on most platforms and has been tested for the latest Python version (3.7) across the most commonly used platforms. Simply install Pillow with pip: </p>
 <div class="codehilite"><pre><span></span><code>(venv) $ pip install pillow
 </code></pre></div>
 
-
-<h4>Let's begin...</h4>
+<h4 id="lets-begin">Let's begin...</h4>
 <p>Let's cover off some basic usage of Pillow; opening Images, resizing and saving images. 
 If you want to follow along, find an image that you want to use and keep it handy in the same working directory of your program.py.</p>
-<h4>1) Opening (and saving) images</h4>
+<h4 id="1-opening-and-saving-images">1) Opening (and saving) images</h4>
 <div class="codehilite"><pre><span></span><code><span class="c1"># program.py</span>
 
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -131,22 +128,18 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>It's not unreasonable to have expected that to 'open' on your screen, but that's not what is meant here. You can test if the opening of the image in Python was successful by ensuring it returned an image object: </p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># if successful, should return an Image object:</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>  <span class="c1"># output: &lt;class &#39;PIL.JpegImagePlugin.JpegImageFile&#39;&gt;</span>
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code>&lt;class &#39;PIL.JpegImagePlugin.JpegImageFile&#39;&gt;
 </code></pre></div>
-
 
 <p>Instead, to open, or show, the image on your screen use: </p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># to actually open and view it.</span>
 <span class="n">image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-
 
 <p>This is the image I am using for this work (it could be the PyBites corporate aircraft?): </p>
 <p><img alt="title" src="../static/img/water/original_aircraft.jpg" /></p>
@@ -155,37 +148,30 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="nb">print</span><span class="p">((</span><span class="n">image</span><span class="o">.</span><span class="n">format</span><span class="p">))</span> <span class="c1"># Output: JPEG</span>
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code>JPEG
 </code></pre></div>
-
 
 <div class="codehilite"><pre><span></span><code><span class="c1"># The pixel format, i.e. RGB</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code>RGB
 </code></pre></div>
-
 
 <div class="codehilite"><pre><span></span><code><span class="c1"># Size in pixels</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code>(6000, 4000)
 </code></pre></div>
-
 
 <p>Ok, let's save the image as something else, while also changing the file format from a JPEG to a PNG format:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># saving an image as a new image; can also change file format i.e. jpg -&gt; png</span>
 <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;new_image.png&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>You should end up with two image files in your working directory: 'original.jpg' and 'new_image.png'. </p>
-<h4>2) Resizing images</h4>
+<h4 id="2-resizing-images">2) Resizing images</h4>
 <p>Here's where the fun really starts! Of course, it's possible to resize images using Pillow. </p>
 <p>The previous image size was determined to be 6000 pixels x 4000 pixels. Let's change that to make the new_image.png smaller. Our watermarking will probably need to be smaller than the image to be watermarked. </p>
 <p>To resize an image, we can pass a 2 integer tuple describing width and height to resize().</p>
@@ -198,15 +184,12 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="nb">print</span><span class="p">(</span><span class="n">new_image_400x400</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code>(400, 400)
 </code></pre></div>
-
 
 <p>Let's look at our new image 'new_image_400x400.jpg'</p>
 <div class="codehilite"><pre><span></span><code><span class="n">new_image_400x400</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># will open the image on your screen</span>
 </code></pre></div>
-
 
 <p>This is what it looks like. Does it look right to you? </p>
 <p><img alt="title" src="../static/img/water/new_image_400x400.jpg" /></p>
@@ -220,17 +203,15 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code>(400, 266)
 </code></pre></div>
-
 
 <p>While we have just shrunk our image, another positive of thumbnail is that it cannot upscale the image above the pixel size of the original - no blow out! I.e. setting a pixel size of 8000 x 8000 pixels results in an image size of 6000 x 4000 pixels as per the original dimensions. </p>
 <p>This looks much better: </p>
 <p><img alt="title" src="../static/img/water/image_thumbnail.jpg" /></p>
 <p>In parts 1) and 2) we covered off how to open an image in Pillow, and on the screen. Then resize it using either the resize function or the preferred thumbnail function which preserves the image's aspect ratio. </p>
 <p>Let's now look at how we can paste an image onto another image. </p>
-<h4>3) Pasting an image onto another image</h4>
+<h4 id="3-pasting-an-image-onto-another-image">3) Pasting an image onto another image</h4>
 <p>Pasting an image onto another image using Pillow is straightforward and fundamental to creating a watermarked image. For this part, I'm going to use the original aircraft image, and paste the PyBites logo in the bottom right corner to it. </p>
 <p>Quite often your second 'watermark' image will have a solid coloured background to it. That needs to be made transparent so that the 'watermark' background merges into the original image well. I'm using a Mac so I refererred to this Apple support page (https://support.apple.com/en-nz/guide/preview/prvw15636/mac) that showed me how to do this. There are methods easily 'Googled' for Windows using Paint too. </p>
 <p>This is the PyBites logo from the #100DaysOfCode course, that I modified with a transparent background using the method described above. <img alt="title" src="../static/img/water/pybites_trans.png" /></p>
@@ -250,7 +231,6 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="n">image_copy</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;pasted_image.jpg&#39;</span><span class="p">)</span>
 <span class="n">image_copy</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-
 
 <p>Here's the result: </p>
 <p><img alt="title" src="../static/img/water/pasted_image.jpg" /></p>
@@ -274,11 +254,10 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="n">image_copy</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;pasted_image_with_trans_backgnd.jpg&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>This is better! (Although we should have resized perhaps!)</p>
 <p><img alt="title" src="../static/img/water/pasted_image_with_trans_backgnd.jpg" /></p>
 <p>In part 3) we covered how to paste a logo image onto a main image, and introduced how the paste function can also take a transparency mask as an optional argument.</p>
-<h4>4) A final program to paste multiple images over the original</h4>
+<h4 id="4-a-final-program-to-paste-multiple-images-over-the-original">4) A final program to paste multiple images over the original</h4>
 <p>As mentioned, the Pillow documentation is really quite good. Advanced users will want to understand how to add/replace alpha layers, or convert to black &amp; white from RGB colours, and change many other parameters. </p>
 <p>I encourage you to read the documentation and have a play! </p>
 <p>The following code is a variant of the work above. It pastes multiple copies of the PyBites logo watermark all over the original image. While the PyBites logo is a bit of an excessive watermark it demonstrates that a formatted text, possibly with an accompanying logo, can be splashed all over an image you might want to protect online from being copied. This might prevent the image being copied and claimed as someone else's work, whereas a single watermarked image could be cropped out of the original picture. </p>
@@ -310,7 +289,6 @@ If you want to follow along, find an image that you want to use and keep it hand
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">create_watermark</span><span class="p">(</span><span class="s1">&#39;original_aircraft.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;original_final_watermarked.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;pybites_trans.png&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>This results in the following output:</p>
 <p><img alt="title" src="../static/img/water/original_final_watermarked.jpg" /></p>

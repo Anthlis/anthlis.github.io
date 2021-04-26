@@ -14,7 +14,6 @@
 
     <!-- Custom styles for this template -->
     <!-- google fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,900;1,400&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
@@ -75,7 +74,6 @@
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a href="/about/" class="p-2 text-dark float-right">About</a>
                     <a href="/" class="p-2 text-dark float-right">Blog</a>
-                    <a href="/reading/" class="p-2 text-dark float-right">Reading</a>
                 </div>
             </div>
         </header>
@@ -109,7 +107,7 @@
                 
                 <div  class="markdown-body">
                 <p><p>This article was originally written for and posted by PyBites <a href="https://pybit.es/guest-communication-skills.html">here</a> in May 2020.</p>
-<h3>Introduction</h3>
+<h3 id="introduction">Introduction</h3>
 <p>I wonder how people get into software programming, whether it be for a job or hobby? </p>
 <p>It's one of the first things I often listen for at the start of Michael Kennedy's Talk Python To Me podcast.</p>
 <p>Who was it that inspired you? </p>
@@ -118,11 +116,11 @@
 <blockquote>
 <p>Mentoring children is a whole new challenge, and one that served to help me think about my own communication and empathy skills at work too. </p>
 </blockquote>
-<h3>Coding is perhaps the easiest part of being a developer</h3>
+<h3 id="coding-is-perhaps-the-easiest-part-of-being-a-developer">Coding is perhaps the easiest part of being a developer</h3>
 <p>Python programming is a way I keep my technical chops sharp while I do commercial, contractual and financial work in my management role nowadays. This article draws on my experience in volunteering my time mentoring children around the ages 9-13. I have done this through <a href="https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics#Europe">STEM</a> initiatives in local New Zealand schools; by also being a judge at a high profile regional schools' science and technology fair, and more recently, at a local after-school digi-tech club through Code Club Aotearoa. Volunteering for a Code Club involves travelling to your local primary or intermediate school, or public venue, once a week to help run your club with other volunteers and a schoolteacher for one hour.</p>
 <p>I'm grateful to have a supportive boss who lets me take an hour of my week to do this. It comes under creating a sustainable future in my personal development plan - i.e. getting schoolchildren interested in technology at an early age and showing them the various career paths available. My boss happens to be an ex-fighter pilot flying instructor, so he knows a thing or two about teaching people and getting them to do the right thing at the right time! I was surprised he agreed to let me do this and we've often exchanged the challenges of teaching, and developing communication skills, in our own catchups since. </p>
 <p>Mentoring children is a whole new challenge, and one that served to help me think about my own communication and empathy skills at work too. </p>
-<h3>One of my first Code Club Python sessions went something like this...</h3>
+<h3 id="one-of-my-first-code-club-python-sessions-went-something-like-this">One of my first Code Club Python sessions went something like this...</h3>
 <p>Let's set the scene. It's a few weeks into the school term, and those students that have completed their project work using Scratch 3 can start to learn Python.</p>
 <p>A student is working on writing a program to ask the user their age, and then tell them their age in dog years! You can calculate a person’s age in dog years by multiplying their age by 7 apparently. </p>
 <p>So, after failing to set-up their installed VS Code because their school managed device won't allow installation of the Python extension, I encourage the use of <a href="https://repl.it/">repl.it</a> instead. Next comes the hurdle of explaining why the multiplication sign is a '*' and not a 'x' like the teacher writes on the whiteboard in maths lessons. Some children have used a computer for solving maths problems more than others it seems.  </p>
@@ -130,12 +128,10 @@
 <div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your age? &quot;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>"That's a good start but have a think about creating a variable so you can re-use the same piece of code over and over again and printing out the result."</p>
 <div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your age? &quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">9</span>
 </code></pre></div>
-
 
 <p>"Hmmm, not quite, let me explain....", and a conversation around variables, names and objects begins. This is where I've broken out and used <a href="http://www.pythontutor.com/">PythonTutor</a> before, but it can also confuse and overwhelm a 9-year-old.  </p>
 <p>We make some success. </p>
@@ -144,7 +140,6 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
 <span class="mi">9</span> 
 </code></pre></div>
-
 
 <p>So far, so good. "Now, multiply that by seven and present your answer". 
 "That's easy", they say.</p>
@@ -156,7 +151,6 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">dog_years</span><span class="p">)</span>
 <span class="mi">9999999</span>
 </code></pre></div>
-
 
 <p>"It doesn't quite work!", the student exclaims. The class teacher hears this, and I smile knowingly. The other students put their heads in their hands upon reaching the same point in the lesson plan too. They soon start talking and spark up a browser tab to play an online game that admittedly looks quite cool. </p>
 <p>And immediately a dialog starts in my head that goes something like this: </p>
@@ -179,7 +173,6 @@
 <span class="o">&gt;&gt;&gt;</span>
 </code></pre></div>
 
-
 <p>At this point, she's looking at me confused. “It's clearly a number on the screen, and which number are you talking about anyway?”, she asks. </p>
 <p>Children are really good at asking "why?". </p>
 <p>In fact, my experience has taught me that they are relentless ninjas at asking why at least five times, even after offering your best answer. Oh, the innocence. </p>
@@ -190,7 +183,7 @@
 <p>"Great session team!", I exclaim, "Next week, we'll talk about reusing code and using functions". </p>
 <p>My car drive back to the office leaves me shuddering as I think about having to explain code indenting and whitespace next week. </p>
 <p>I get back to the office. "How did today's coding go then?", asks my boss, "And did you remember your five ways to answer the same question?". He smiles knowing I learned more about myself than they did about coding today. </p>
-<h3>A call to action</h3>
+<h3 id="a-call-to-action">A call to action</h3>
 <blockquote>
 <p>You don't even need to consider yourself a specialist either if you can readily ask enquiring and supportive questions.</p>
 </blockquote>
@@ -201,7 +194,7 @@
 <p>Remember that communication is as much about the receiver as it is the transmitter! It's another way to give back to the community if you like. You might find it very rewarding and enlightening about your own skills and development too. Let me know how it goes. What are your experiences?</p>
 <p>All the best!
 -- Anthony</p>
-<h3>Code Club</h3>
+<h3 id="code-club">Code Club</h3>
 <p>Code Club Aotearoa comes under the umbrella Code Club organisation. Code Club volunteers join a local club and help children aged 9-13 learn to make games, animations and websites using the Code Club resources.</p>
 <p>You don't even need to consider yourself a specialist either if you can readily ask enquiring and supportive questions. I'm certainly no expert in Python and suffer imposter syndrome as much as the next person. Also, students don't mind being shown how to search for answers if you don't know there and then, but be prepared to have your Google-Fu search skills shown up by these digital natives! </p>
 <p>There are a variety of projects provided to you as a volunteer in the Code Club curriculum. These include projects in Scratch, HTML/CSS, Python and Raspberry Pi, and even MicroPython on Lego Mindstorms. Code Club students are traditionally 9-13 years old. Very often students enter their first club with no prior coding experience so they will need to get started with the basics. However, Code Club students are from all varying levels of technical ability, ethnicity, gender and are all excited to learn to code!</p>

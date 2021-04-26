@@ -14,7 +14,6 @@
 
     <!-- Custom styles for this template -->
     <!-- google fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,900;1,400&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
@@ -75,7 +74,6 @@
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a href="/about/" class="p-2 text-dark float-right">About</a>
                     <a href="/" class="p-2 text-dark float-right">Blog</a>
-                    <a href="/reading/" class="p-2 text-dark float-right">Reading</a>
                 </div>
             </div>
         </header>
@@ -113,18 +111,17 @@
 <p>The best way to install PySnooper is with Pip: </p>
 <p><code>$ pip install pysnooper</code></p>
 <p>There's also a Conda install with conda-forge too. </p>
-<h3>Armstrong Number's</h3>
+<h3 id="armstrong-numbers">Armstrong Number's</h3>
 <p>My example will use a function to solve the Armstrong number question: given an integer, determine if it is an armstrong number.</p>
 <p>An armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits.</p>
 <p>a) 153 is an armstrong number. It's a 3 digit number:</p>
 <div class="codehilite"><pre><span></span><code>(1^3) + (5^3) + (3^3)= 153.
 </code></pre></div>
 
-
 <p>b) 371 is also an armstrong number.</p>
 <p>c) any single digit numbers (1-9) are armstrong numbers as well.</p>
-<h3>A revision and comparison of debugging and logging techniques.</h3>
-<h4>My original Armstrong number algorithm</h4>
+<h3 id="a-revision-and-comparison-of-debugging-and-logging-techniques">A revision and comparison of debugging and logging techniques.</h3>
+<h4 id="my-original-armstrong-number-algorithm">My original Armstrong number algorithm</h4>
 <p>Here is the code that I'll first demonstrate works with no means of any debugging:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -146,15 +143,13 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
 </code></pre></div>
 
-
 <p>The output is simply: </p>
 <div class="codehilite"><pre><span></span><code>True
 Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
-
 <p>If this wasn't working, we'd have to inspect the error messages. </p>
-<h4>1. Using print statements</h4>
+<h4 id="1-using-print-statements">1. Using print statements</h4>
 <p>This is the same code, but interspersed with a number of simple print statements:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -180,7 +175,6 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
 </code></pre></div>
 
-
 <p>The output of this is quite helpful: </p>
 <div class="codehilite"><pre><span></span><code>n_length: <span class="m">3</span>
 The starting number is <span class="m">153</span>
@@ -198,8 +192,7 @@ True
 Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
-
-<h4>2. Using the PySnooper decorator</h4>
+<h4 id="2-using-the-pysnooper-decorator">2. Using the PySnooper decorator</h4>
 <p>This is the same code as the original, but using the PySnooper decorator:</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pysnooper</span>
 
@@ -223,7 +216,6 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
 </code></pre></div>
-
 
 <p>The output of this is more involved using only one extra line of code (not including the import)!</p>
 <div class="codehilite"><pre><span></span><code>Source path:... /Users/anthlis/pycharmprojects/pysnooper/arm_3_snoops.py
@@ -266,17 +258,14 @@ True
 Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
-
-<h4>3. Using the Python's pdb debugger</h4>
+<h4 id="3-using-the-pythons-pdb-debugger">3. Using the Python's pdb debugger</h4>
 <p>Since Python 3.7, it has been possible to simply enter the debugger by using the built-in function:</p>
 <div class="codehilite"><pre><span></span><code>breakpoint()
 </code></pre></div>
 
-
 <p>instead of writing </p>
 <div class="codehilite"><pre><span></span><code>import pdb; set_trace()
 </code></pre></div>
-
 
 <p>When the line above is executed, Python stops and waits for you to tell it what to do next. You’ll see a (Pdb) prompt. This means that you’re now paused in the interactive debugger and can enter a command. I tend to only use 'n' to execute the current statement (step over), 'c' to continue execution until a breakpoint is encountered or 'p <em>expr</em>' to print the value of <em>expr</em>. (There are cheatsheets on the interwebs and you can always type 'h' or 'help' for a list of commands to get further help on).</p>
 <p>This uses the same code as the original, but using Python's pdb debugger:</p>
@@ -300,13 +289,11 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
 </code></pre></div>
 
-
 <p>The output requires you to instruct the debugger what to do next in terms of stepping through the code: </p>
 <div class="codehilite"><pre><span></span><code>&gt; /Users/anthlis/pycharmprojects/pysnooper/arm_4_pdb.py<span class="o">(</span><span class="m">12</span><span class="o">)</span>is_armstrong<span class="o">()</span>
 -&gt; <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
 <span class="o">(</span>Pdb<span class="o">)</span> 
 </code></pre></div>
-
 
 <p>At the command prompt is where you enter the instruction of course. I've chosen to enter 'p' several times...</p>
 <div class="codehilite"><pre><span></span><code>-&gt; temp //<span class="o">=</span> <span class="m">10</span>
@@ -328,9 +315,8 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 <span class="o">(</span>Pdb<span class="o">)</span> 
 </code></pre></div>
 
-
 <p>and so on... </p>
-<h4>4. A revision of Logging</h4>
+<h4 id="4-a-revision-of-logging">4. A revision of Logging</h4>
 <p>I mentioned logging at the start. Logging has its place, but I hardly ever use it, and I think it's because it seemingly takes a lot of effort to set-up initially. Afterall, I just want to fix the code and move on, right? For the most part, I'm writing simple code functions that I can inspect and debug quickly using other means. I suppose logging is useful for code where you don't readily have access to a terminal to inspect values of expressions such as web applications with multiple users, time stamped events or databases maybe? </p>
 <p>I first encountered logging during the Talk Python &amp; PyBites 100 days of code course. Michael Kennedy discussed logging as per the standard library, and then introduced Logbook for simpler logging. This is what I have used here, which needs a pip install. </p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">logbook</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">StreamHandler</span>
@@ -359,7 +345,6 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_armstrong</span><span class="p">(</span><span class="mi">153</span><span class="p">))</span>
 </code></pre></div>
 
-
 <p>The ouput produces a simple and tidy log output as shown:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.927662<span class="o">]</span> INFO: Logbook: digit: <span class="m">3</span>, sum: <span class="m">27</span>, temp: <span class="m">15</span>
 <span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.928117<span class="o">]</span> INFO: Logbook: digit: <span class="m">5</span>, sum: <span class="m">152</span>, temp: <span class="m">1</span>
@@ -369,14 +354,13 @@ True
 Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
-
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 <p>The most obvious case where a debugger is the most useful is if my program crashes. With a debugger I can stop exactly where the problem occurs and inspect some variables to see what's going on.</p>
 <p>On the flip side, sometimes with very complex programs with multiple threads or processes, using a debugger can be a real pain! In that sort of program it's often easiest to print or log things.</p>
 <p>With PySnooper, there is no need to setup a debugger to debug code. And there is no need to delete all the strategically placed print statements either that PySnooper does away with. </p>
 <p>I like PySnooper and will continue to use it in my arsenal to obliterate bugs and crashes in my future code, no matter how hard I try not to let them occur in the first place! </p>
 <p>This was also a useful exercise for me to revisit the use of Logbook and I will try to use this more often too. </p>
-<h3>Useful Links:</h3>
+<h3 id="useful-links">Useful Links:</h3>
 <p>[1]: <a href="https://github.com/cool-RR/PySnooper">PySnooper on GitHub</a><br />
 [2]: <a href="https://realpython.com/python-debugging-pdb/">Real Python's Python Debugging With Pdb</a><br />
 [3]: <a href="https://www.youtube.com/watch?v=HHrVBKZLolg">"Goodbye Print Statements, Hello Debugger!" - Nina Zakharenko (PyCon AU 2019)</a><br />

@@ -14,7 +14,6 @@
 
     <!-- Custom styles for this template -->
     <!-- google fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,900;1,400&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
@@ -75,7 +74,6 @@
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a href="/about/" class="p-2 text-dark float-right">About</a>
                     <a href="/" class="p-2 text-dark float-right">Blog</a>
-                    <a href="/reading/" class="p-2 text-dark float-right">Reading</a>
                 </div>
             </div>
         </header>
@@ -123,16 +121,15 @@ Alt-H2
 ------
 </code></pre></div>
 
-
 <h2 id="h1">H1</h2>
-<h3>H2</h3>
-<h4>H3</h4>
-<h5>H4</h5>
-<h6>H5</h6>
-<h6>H6</h6>
+<h3 id="h2">H2</h3>
+<h4 id="h3">H3</h4>
+<h5 id="h4">H4</h5>
+<h6 id="h5">H5</h6>
+<h6 id="h6">H6</h6>
 <p>Alternatively, for H1 and H2, an underline-ish style:</p>
 <h2 id="alt-h1">Alt-H1</h2>
-<h3>Alt-H2</h3>
+<h3 id="alt-h2">Alt-H2</h3>
 <h2 id="emphasis">Emphasis</h2>
 <p class="alert alert-info" role="alert">We use html strik tag, for example, <code>&lt;s&gt;&lt;/s&gt;</code> for strikethrough while <code>~~</code> does not work here. Code highlight is suppoted by <code>markdown.extensions.codehilite</code> and <code>markdown.extensions.fenced_code</code>.</p>
 <div class="codehilite"><pre><span></span><code>Emphasis, aka italics, with *asterisks* or _underscores_.
@@ -143,7 +140,6 @@ Combined emphasis with **asterisks and _underscores_**.
 
 <span class="hll">Strikethrough uses two tildes. &lt;s&gt;Scratch this.&lt;/s&gt;
 </span></code></pre></div>
-
 
 <p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
 <p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
@@ -170,7 +166,6 @@ Combined emphasis with **asterisks and _underscores_**.
 - Or minuses
 + Or pluses
 </code></pre></div>
-
 
 <ol>
 <li>First ordered list item</li>
@@ -219,7 +214,6 @@ Some text to show that the reference links can follow later.
 [link text itself]: http://www.reddit.com
 </code></pre></div>
 
-
 <p><a href="https://www.google.com">I'm an inline-style link</a></p>
 <p><a href="https://www.google.com" title="Google's Homepage">I'm an inline-style link with title</a></p>
 <p><a href="https://www.mozilla.org">I'm a reference-style link</a></p>
@@ -242,7 +236,6 @@ Reference-style:
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 2&quot;
 </code></pre></div>
 
-
 <p>Here's our logo (hover to see the title text):</p>
 <p>Inline-style: 
 <img alt="alt text" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" title="Logo Title Text 1" /></p>
@@ -251,7 +244,6 @@ Reference-style:
 <h2 id="code-and-syntax-highlighting">Code and Syntax Highlighting</h2>
 <div class="codehilite"><pre><span></span><code>Inline `code` has `back-ticks around` it.
 </code></pre></div>
-
 
 <p>Inline <code>code</code> has <code>back-ticks around</code> it.</p>
 <div class="codehilite"><pre><span></span><code>```javascript
@@ -270,21 +262,17 @@ But let&#39;s throw in a &lt;b&gt;tag&lt;/b&gt;.
 ```
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
 </code></pre></div>
-
 
 <div class="codehilite"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Python syntax highlighting&quot;</span>
 <span class="nb">print</span> <span class="n">s</span>
 </code></pre></div>
 
-
 <div class="codehilite"><pre><span></span><code>No language indicated, so no syntax highlighting. 
 But let&#39;s throw in a &lt;b&gt;tag&lt;/b&gt;.
 </code></pre></div>
-
 
 <h2 id="tables">Tables</h2>
 <div class="codehilite"><pre><span></span><code>Colons can be used to align columns.
@@ -304,7 +292,6 @@ Markdown | Less | Pretty
 *Still* | `renders` | **nicely**
 1 | 2 | 3
 </code></pre></div>
-
 
 <p>Colons can be used to align columns.</p>
 <table>
@@ -366,7 +353,6 @@ Quote break.
 &gt; This is a very long line that will still be quoted properly when it wraps. Oh boy let&#39;s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
 </code></pre></div>
 
-
 <blockquote>
 <p>Blockquotes are very handy in email to emulate reply text.
 This line is part of the same quote.</p>
@@ -384,7 +370,6 @@ This line is part of the same quote.</p>
   &lt;dd&gt;Does *not* work **very** well. Use HTML &lt;em&gt;tags&lt;/em&gt;.&lt;/dd&gt;
 &lt;/dl&gt;
 </code></pre></div>
-
 
 <dl>
   <dt>Definition list</dt>
@@ -410,7 +395,6 @@ ___
 Underscores
 </code></pre></div>
 
-
 <p>Three or more...</p>
 <hr />
 <p>Hyphens</p>
@@ -427,7 +411,6 @@ This line is also a separate paragraph, but...⋅⋅
 This line is only separated by a single newline, so it&#39;s a separate line in the *same paragraph*.
 </code></pre></div>
 
-
 <p>Here's a line for us to start with.</p>
 <p>This line is separated from the one above by two newlines, so it will be a <em>separate paragraph</em>.</p>
 <p>This line is also a separate paragraph, but...<br />
@@ -439,13 +422,11 @@ This line is only separated by a single newline, so it's a separate line in the 
 alt=&quot;IMAGE ALT TEXT HERE&quot; width=&quot;240&quot; height=&quot;180&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;
 </code></pre></div>
 
-
 <p><a href="https://www.youtube.com/watch?v=KolfEhV-KiA
 " target="_blank"><img src="http://img.youtube.com/vi/KolfEhV-KiA/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></p>
 <div class="codehilite"><pre><span></span><code>[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/KolfEhV-KiA/0.jpg)](https://www.youtube.com/watch?v=KolfEhV-KiA)
 </code></pre></div>
-
 
 <p><a href="https://www.youtube.com/watch?v=KolfEhV-KiA"><img alt="IMAGE ALT TEXT HERE" src="http://img.youtube.com/vi/KolfEhV-KiA/0.jpg" /></a></p></p>
             </div>
