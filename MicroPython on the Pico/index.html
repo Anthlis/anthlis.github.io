@@ -83,67 +83,124 @@
     <div class="row">
         <div class="col-md-9 blog-main p-4">
             
-            <h3 class="pb-4 mb-4 font-italic border-bottom">
-                Recent Posts Tagged Pybites
-            </h3>
-            
             
             <div class="blog-post mb-2">
                 <h2 class="blog-post-tile">
                     
-                    <a href="/guest-codeclub-comms/" style='color: #000;'>Rockstar Python Developers need great communication skills too.</a>
+                    Quick Post! Getting MicroPython on the Raspberry Pi Pico
                     
                 </h2>
-                <p class="blog-post-meta">May 03, 2020</p>
+                <p class="blog-post-meta">April 25, 2021</p>
                 
                 <span class="text-info">
                 <i class="fas fa-tags"></i></span>
                 
-                <a href="/tag/python/" class="badge badge-info">Python</a>
+                <a href="/tag/micropython/" class="badge badge-info">Micropython</a>
                 
-                <a href="/tag/pybites/" class="badge badge-info">Pybites</a>
+                <a href="/tag/pico/" class="badge badge-info">Pico</a>
                 
-                <a href="/tag/code%20club/" class="badge badge-info">Code club</a>
-                
-                <a href="/tag/communication/" class="badge badge-info">Communication</a>
+                <a href="/tag/rshell/" class="badge badge-info">Rshell</a>
                 
                 
                 
                 <div  class="markdown-body">
-                <p><p>Mentoring children is a whole new challenge, and one that served to help me think about my own communication and empathy skills at work too.</p></p>
+                <p><p>As described in the title, this is a quick post to describe how to get MicroPython on to the Raspberry Pi Pico microcontroller board, and then transfer files across on to it using <code>rshell</code>. </p>
+<p>Most tutorials, and indeed the official Raspberry Pi documentation, describe how to connect using the Thonny program instead. There is nothing wrong with this approach, but I simply prefer to use the command line in a terminal instead. </p>
+<p>I am using a Pico connected to my Macbook Air via USB and using iTerm. In an update to this post I will describe how to use the Pico with PyCharm. </p>
+<h3 id="programming-the-pico-with-micropython">Programming the Pico with MicroPython</h3>
+<p>​</p>
+<h4 id="micropython-software-installation">MicroPython software installation</h4>
+<p>​[1]: Go to the downloads page to download a .uf2 file for the Pico:<br />
+<a href="https://micropython.org/download/rp2-pico/">MicroPython for Pico Downloads</a>  </p>
+<p>[2]: Press the <code>BOOTSEL</code> button while connecting the Pico to the Mac USB port. A new disk drive called RPi-RP2 will come up, and the switch can be released. To install Micropython on the Pico, drag and drop the .uf2 file onto this drive. The drive will disappear. Ignore the warning - its ok! Reconnect the USB cable to the Mac now. 
+​</p>
+<h4 id="accessing-the-repl">Accessing the REPL</h4>
+<p>​
+[3]: In the terminal, use the <code>$ ls /dev/tty.*</code> command to find out the COM port being used on the Mac. The name should be: <code>/dev/tty.usbmodem0000000000001</code>. </p>
+<p>[4]:Create a project directory and virtual environment: <br />
+​<code>$ mkdir pico-tests</code><br />
+<code>$ cd pico-tests</code><br />
+<code>$ python3 -m venv --prompt pico-env venv</code><br />
+then activate the venv in the usual way: <code>$ source venv/bin/activate</code></p>
+<p>​[5]: Install rshell: 
+<code>(pico-env) $ pip install rshell</code>  </p>
+<p>[6]: Connect the Pico: 
+<code>(pico-env) $ rshell -p /dev/tty.usbmodem0000000000001 --buffer-size 512</code>  </p>
+<p>​
+The output will look like:</p>
+<p>```Using buffer-size of 512<br />
+Connecting to /dev/tty.usbmodem0000000000001 (buffer-size 512)...<br />
+Trying to connect to REPL  connected<br />
+Testing if ubinascii.unhexlify exists ... Y<br />
+Retrieving root directories ...<br />
+Setting time ... Feb 04, 2021 14:33:07<br />
+Evaluating board_name ... pyboard<br />
+Retrieving time epoch ... Jan 01, 1970<br />
+Welcome to rshell. Use Control-D (or the exit command) to exit rshell.   <br />
+/Users/miguel/pico-tests&gt; </p>
+<div class="codehilite"><pre><span></span><code>The command should end with a new prompt. Type `help` to see all the commands `rshell` supports. 
+
+Note, that the Pico is described as a &quot;pyboard&quot; (for now maybe). 
+
+[7]: Now type in `repl` to get to the REPL. 
+
+```/Users/miguel/pico-tests&gt; repl
+Entering REPL. Use Control-X to exit.
+&gt;
+MicroPython v1.14 on 2021-02-02; Raspberry Pi Pico with RP2040
+Type &quot;help()&quot; for more information.
+&gt;&gt;&gt; 
+</code></pre></div>
+
+<p>To enter straight into the REPL instead, simply type:<br />
+<code>$ rshell -p /dev/tty.usbmodem0000000000001 --buffer-size 512 repl</code></p>
+<h3 id="write-some-micropython-code-for-the-pico">Write some MicroPython code for the Pico...</h3>
+<p>The MicroPython code below, is the equivalent of the hardware's "Hello, World!". It simply flashes the onboard blue LED on and off! </p>
+<div class="codehilite"><pre><span></span><code># led_blink.py
+
+from machine import Pin
+from utime import sleep
+
+led = Pin(25, Pin.OUT)
+for i in range(5):
+    led.on()
+    sleep(1)
+    led.off()
+    sleep(1)
+</code></pre></div>
+
+<p>Alternatively, you can get the temperature from the onboard pin-diode: </p>
+<div class="codehilite"><pre><span></span><code># temperature.py
+
+import machine 
+import utime  
+
+sensor_temp = machine.ADC(4)  
+
+conversion_factor = 3.3 / (65535)
+
+while True:  
+    reading = sensor_temp.read_u16() * conversion_factor 
+    temperature = 27 - (reading - 0.706)/0.001721 
+    print(temperature)
+    utime.sleep(2)
+</code></pre></div>
+
+<h4 id="to-copy-the-code-to-mainpy-for-immediate-restart-using-the-command-line">To copy the code to main.py for immediate restart using the command line</h4>
+<p>[8]: Connect the Pico: 
+<code>(pico-env) $ rshell -p /dev/tty.usbmodem0000000000001 --buffer-size 512</code></p>
+<p><code>&gt; cp led_blink.py /pyboard/main.py</code>
+The cp command above copies the local led_blink.py file from your computer to the root directory of the Pico file system with the name main.py.</p>
+<p>[9]: Now power cycle the Pico by unplugging it from USB and then plugging it in again. The green LED should blink! 
+It will also run if do a soft reboot (CTRL-D) in a REPL session, or by wiring a switch from RUN (pin 30) to GND (pin 28). </p>
+<h4 id="next-steps">Next steps:</h4>
+<p>I want to explore interrupts vs multithreading on the Pico. I also want to experiment with the ADC using a potentiometer and driving servos for a biped robot. I'm also thinking of getting a Raspberry Pi 4 and will be looking to drive the Pico from this too.</p>
+<p>I'll have future posts describing these experiments soon...</p>
+<h4 id="useful-references">Useful References:</h4>
+<p>[1]: <a href="https://www.raspberrypi.org/documentation/rp2040/getting-started/">Documentation for Raspberry Pi Pico and other RP2040-based boards.</a> <br />
+[2]: <a href="https://hackspace.raspberrypi.org/books/micropython-pico">Get Started with MicroPython on Raspberry Pi Pico</a><br />
+[3]: <a href="https://micropython.org/download/rp2-pico/">Firmware for Raspberry Pi Pico on micropython.org)</a></p></p>
             </div>
-            <!--<p>
-                <a href="/guest-codeclub-comms/" class="text-primary">Read More</a>
-            </p> -->
-                
-            </div>
-            <hr>
-            
-            <div class="blog-post mb-2">
-                <h2 class="blog-post-tile">
-                    
-                    <a href="/Watermarking_images_in_Python_using_Pillow/" style='color: #000;'>Watermarking images using Python</a>
-                    
-                </h2>
-                <p class="blog-post-meta">April 19, 2020</p>
-                
-                <span class="text-info">
-                <i class="fas fa-tags"></i></span>
-                
-                <a href="/tag/python/" class="badge badge-info">Python</a>
-                
-                <a href="/tag/pybites/" class="badge badge-info">Pybites</a>
-                
-                <a href="/tag/images/" class="badge badge-info">Images</a>
-                
-                
-                
-                <div  class="markdown-body">
-                <p><p>This article was originally written for and posted by PyBites in June 2019.</p></p>
-            </div>
-            <!--<p>
-                <a href="/Watermarking_images_in_Python_using_Pillow/" class="text-primary">Read More</a>
-            </p> -->
                 
             </div>
             <hr>
