@@ -64,11 +64,18 @@
     flex: 0 0 auto;
   }
 
-  .badge-info {
+  .badge.badge-info {
     /*color: darkorange;*/
     color: DodgerBlue;
-    background-color: #f9f9f9;
+    background-color: #e5e5e5;
+    transition: all;
   }
+
+  .badge.badge-info:hover {
+    color: red;
+    background-color: #e5e5e5;
+  }
+
 
   .fas.fa-tags {
     /*color: darkorange;*/
