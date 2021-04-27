@@ -128,23 +128,22 @@ then activate the venv in the usual way: <code>$ source venv/bin/activate</code>
 <code>(pico-env) $ rshell -p /dev/tty.usbmodem0000000000001 --buffer-size 512</code>  </p>
 <p>​
 The output will look like:</p>
-<p>```Using buffer-size of 512<br />
-Connecting to /dev/tty.usbmodem0000000000001 (buffer-size 512)...<br />
-Trying to connect to REPL  connected<br />
-Testing if ubinascii.unhexlify exists ... Y<br />
-Retrieving root directories ...<br />
-Setting time ... Feb 04, 2021 14:33:07<br />
-Evaluating board_name ... pyboard<br />
-Retrieving time epoch ... Jan 01, 1970<br />
-Welcome to rshell. Use Control-D (or the exit command) to exit rshell.   <br />
-/Users/miguel/pico-tests&gt; </p>
-<div class="codehilite"><pre><span></span><code>The command should end with a new prompt. Type `help` to see all the commands `rshell` supports. 
+<div class="codehilite"><pre><span></span><code>Using buffer-size of 512  
+Connecting to /dev/tty.usbmodem0000000000001 (buffer-size 512)...  
+Trying to connect to REPL  connected  
+Testing if ubinascii.unhexlify exists ... Y  
+Retrieving root directories ...  
+Setting time ... Feb 04, 2021 14:33:07  
+Evaluating board_name ... pyboard  
+Retrieving time epoch ... Jan 01, 1970  
+Welcome to rshell. Use Control-D (or the exit command) to exit rshell.     
+/Users/miguel/pico-tests&gt; 
+</code></pre></div>
 
-Note, that the Pico is described as a &quot;pyboard&quot; (for now maybe). 
-
-[7]: Now type in `repl` to get to the REPL. 
-
-```/Users/miguel/pico-tests&gt; repl
+<p>The command should end with a new prompt. Type <code>help</code> to see all the commands <code>rshell</code> supports. </p>
+<p>Note, that the Pico is described as a "pyboard" (for now maybe). </p>
+<p>[7]: Now type in <code>repl</code> to get to the REPL. </p>
+<div class="codehilite"><pre><span></span><code>/Users/miguel/pico-tests&gt; repl
 Entering REPL. Use Control-X to exit.
 &gt;
 MicroPython v1.14 on 2021-02-02; Raspberry Pi Pico with RP2040
