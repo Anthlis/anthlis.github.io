@@ -106,7 +106,7 @@
                 
                 
                 <div  class="markdown-body">
-                <p><p>As described in the title, this is a quick post to describe how to get MicroPython on to the Raspberry Pi Pico microcontroller board, and then transfer files across on to it using <code>rshell</code>. </p>
+                <p><p>This is a quick post to describe how to get MicroPython on to the Raspberry Pi Pico microcontroller board, and then transfer files across on to it using <code>rshell</code>. </p>
 <p>Most tutorials, and indeed the official Raspberry Pi documentation, describe how to connect using the Thonny program instead. There is nothing wrong with this approach, but I simply prefer to use the command line in a terminal instead. </p>
 <p>I am using a Pico connected to my Macbook Air via USB and using iTerm. In an update to this post I will describe how to use the Pico with PyCharm. </p>
 <h3 id="programming-the-pico-with-micropython">Programming the Pico with MicroPython</h3>
@@ -131,20 +131,21 @@ then activate the venv in the usual way: <code>$ source venv/bin/activate</code>
 The output will look like:</p>
 <div class="codehilite"><pre><span></span><code>Using buffer-size of 512  
 Connecting to /dev/tty.usbmodem0000000000001 (buffer-size 512)...  
-Trying to connect to REPL  connected  
+Trying to connect to REPL  connected 
+Retrieving sysname ... rp2 
 Testing if ubinascii.unhexlify exists ... Y  
 Retrieving root directories ...  
 Setting time ... Feb 04, 2021 14:33:07  
 Evaluating board_name ... pyboard  
 Retrieving time epoch ... Jan 01, 1970  
 Welcome to rshell. Use Control-D (or the exit command) to exit rshell.     
-/Users/miguel/pico-tests&gt; 
+/Users/anthlis/pico-tests&gt; 
 </code></pre></div>
 
 <p>The command should end with a new prompt. Type <code>help</code> to see all the commands <code>rshell</code> supports. </p>
 <p>Note, that the Pico is described as a "pyboard" (for now maybe). </p>
 <p>[7]: Now type in <code>repl</code> to get to the REPL. </p>
-<div class="codehilite"><pre><span></span><code>/Users/miguel/pico-tests&gt; repl
+<div class="codehilite"><pre><span></span><code>/Users/anthlis/pico-tests&gt; repl
 Entering REPL. Use Control-X to exit.
 &gt;
 MicroPython v1.14 on 2021-02-02; Raspberry Pi Pico with RP2040
@@ -155,7 +156,7 @@ Type &quot;help()&quot; for more information.
 <p>To enter straight into the REPL instead, simply type:<br />
 <code>$ rshell -p /dev/tty.usbmodem0000000000001 --buffer-size 512 repl</code></p>
 <h3 id="write-some-micropython-code-for-the-pico">Write some MicroPython code for the Pico...</h3>
-<p>The MicroPython code below, is the equivalent of the hardware's "Hello, World!". It simply flashes the onboard blue LED on and off! </p>
+<p>The MicroPython code below, is the equivalent of the hardware's "Hello, World!". It simply flashes the onboard green LED on and off! </p>
 <div class="codehilite"><pre><span></span><code># led_blink.py
 
 from machine import Pin
@@ -169,7 +170,7 @@ for i in range(5):
     sleep(1)
 </code></pre></div>
 
-<p>Alternatively, you can get the temperature from the onboard pin-diode: </p>
+<p>Alternatively, you can get the temperature from the onboard temperature sense diode which is read on the fourth analogue-to-digital converter channelconnected to : </p>
 <div class="codehilite"><pre><span></span><code># temperature.py
 
 import machine 
