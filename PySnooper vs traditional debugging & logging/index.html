@@ -124,7 +124,7 @@
 <h4 id="my-original-armstrong-number-algorithm">My original Armstrong number algorithm</h4>
 <p>Here is the code that I'll first demonstrate works with no means of any debugging:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    input: 153</span>
 <span class="sd">    output: True</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -145,14 +145,14 @@
 
 <p>The output is simply: </p>
 <div class="codehilite"><pre><span></span><code>True
-Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+Process<span class="w"> </span>finished<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
 <p>If this wasn't working, we'd have to inspect the error messages. </p>
 <h4 id="1-using-print-statements">1. Using print statements</h4>
 <p>This is the same code, but interspersed with a number of simple print statements:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    input: 153</span>
 <span class="sd">    output: True</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -176,20 +176,20 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
 <p>The output of this is quite helpful: </p>
-<div class="codehilite"><pre><span></span><code>n_length: <span class="m">3</span>
-The starting number is <span class="m">153</span>
-digit: <span class="m">3</span>
-sum: <span class="m">27</span>
-temp: <span class="m">15</span>
-digit: <span class="m">5</span>
-sum: <span class="m">152</span>
-temp: <span class="m">1</span>
-digit: <span class="m">1</span>
-sum: <span class="m">153</span>
-temp: <span class="m">0</span>
+<div class="codehilite"><pre><span></span><code>n_length:<span class="w"> </span><span class="m">3</span>
+The<span class="w"> </span>starting<span class="w"> </span>number<span class="w"> </span>is<span class="w"> </span><span class="m">153</span>
+digit:<span class="w"> </span><span class="m">3</span>
+sum:<span class="w"> </span><span class="m">27</span>
+temp:<span class="w"> </span><span class="m">15</span>
+digit:<span class="w"> </span><span class="m">5</span>
+sum:<span class="w"> </span><span class="m">152</span>
+temp:<span class="w"> </span><span class="m">1</span>
+digit:<span class="w"> </span><span class="m">1</span>
+sum:<span class="w"> </span><span class="m">153</span>
+temp:<span class="w"> </span><span class="m">0</span>
 True
 
-Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+Process<span class="w"> </span>finished<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
 <h4 id="2-using-the-pysnooper-decorator">2. Using the PySnooper decorator</h4>
@@ -198,7 +198,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 
 <span class="nd">@pysnooper</span><span class="o">.</span><span class="n">snoop</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    input: 153</span>
 <span class="sd">    output: True</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -218,44 +218,44 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
 <p>The output of this is more involved using only one extra line of code (not including the import)!</p>
-<div class="codehilite"><pre><span></span><code>Source path:... /Users/anthlis/pycharmprojects/pysnooper/arm_3_snoops.py
-Starting var:.. <span class="nv">n</span> <span class="o">=</span> <span class="m">153</span>
-<span class="m">14</span>:55:00.081637 call         <span class="m">5</span> def is_armstrong<span class="o">(</span>n: int<span class="o">)</span> -&gt; bool:
-<span class="m">14</span>:55:00.082160 line        <span class="m">10</span>     <span class="nv">n_length</span> <span class="o">=</span> len<span class="o">(</span>str<span class="o">(</span>n<span class="o">))</span>
-New var:....... <span class="nv">n_length</span> <span class="o">=</span> <span class="m">3</span>
-<span class="m">14</span>:55:00.082252 line        <span class="m">11</span>     <span class="nv">sum</span> <span class="o">=</span> <span class="m">0</span>
-New var:....... <span class="nv">sum</span> <span class="o">=</span> <span class="m">0</span>
-<span class="m">14</span>:55:00.082350 line        <span class="m">12</span>     <span class="nv">temp</span> <span class="o">=</span> n
-New var:....... <span class="nv">temp</span> <span class="o">=</span> <span class="m">153</span>
-<span class="m">14</span>:55:00.082455 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
-<span class="m">14</span>:55:00.082562 line        <span class="m">15</span>         <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
-New var:....... <span class="nv">digit</span> <span class="o">=</span> <span class="m">3</span>
-<span class="m">14</span>:55:00.082650 line        <span class="m">16</span>         <span class="nv">sum</span> <span class="o">+=</span> digit ** n_length
-Modified var:.. <span class="nv">sum</span> <span class="o">=</span> <span class="m">27</span>
-<span class="m">14</span>:55:00.082765 line        <span class="m">17</span>         temp //<span class="o">=</span> <span class="m">10</span>
-Modified var:.. <span class="nv">temp</span> <span class="o">=</span> <span class="m">15</span>
-<span class="m">14</span>:55:00.082875 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
-<span class="m">14</span>:55:00.083132 line        <span class="m">15</span>         <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
-Modified var:.. <span class="nv">digit</span> <span class="o">=</span> <span class="m">5</span>
-<span class="m">14</span>:55:00.083300 line        <span class="m">16</span>         <span class="nv">sum</span> <span class="o">+=</span> digit ** n_length
-Modified var:.. <span class="nv">sum</span> <span class="o">=</span> <span class="m">152</span>
-<span class="m">14</span>:55:00.083507 line        <span class="m">17</span>         temp //<span class="o">=</span> <span class="m">10</span>
-Modified var:.. <span class="nv">temp</span> <span class="o">=</span> <span class="m">1</span>
-<span class="m">14</span>:55:00.083765 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
-<span class="m">14</span>:55:00.083983 line        <span class="m">15</span>         <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
-Modified var:.. <span class="nv">digit</span> <span class="o">=</span> <span class="m">1</span>
-<span class="m">14</span>:55:00.084080 line        <span class="m">16</span>         <span class="nv">sum</span> <span class="o">+=</span> digit ** n_length
-Modified var:.. <span class="nv">sum</span> <span class="o">=</span> <span class="m">153</span>
-<span class="m">14</span>:55:00.084177 line        <span class="m">17</span>         temp //<span class="o">=</span> <span class="m">10</span>
-Modified var:.. <span class="nv">temp</span> <span class="o">=</span> <span class="m">0</span>
-<span class="m">14</span>:55:00.084507 line        <span class="m">14</span>     <span class="k">while</span> temp &gt; <span class="m">0</span>:
-<span class="m">14</span>:55:00.084770 line        <span class="m">19</span>     <span class="k">return</span> <span class="o">(</span><span class="nv">n</span> <span class="o">==</span> sum<span class="o">)</span>
-<span class="m">14</span>:55:00.085044 <span class="k">return</span>      <span class="m">19</span>     <span class="k">return</span> <span class="o">(</span><span class="nv">n</span> <span class="o">==</span> sum<span class="o">)</span>
-Return value:.. True
-Elapsed time: <span class="m">00</span>:00:00.003629
+<div class="codehilite"><pre><span></span><code>Source<span class="w"> </span>path:...<span class="w"> </span>/Users/anthlis/pycharmprojects/pysnooper/arm_3_snoops.py
+Starting<span class="w"> </span>var:..<span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">153</span>
+<span class="m">14</span>:55:00.081637<span class="w"> </span>call<span class="w">         </span><span class="m">5</span><span class="w"> </span>def<span class="w"> </span>is_armstrong<span class="o">(</span>n:<span class="w"> </span>int<span class="o">)</span><span class="w"> </span>-&gt;<span class="w"> </span>bool:
+<span class="m">14</span>:55:00.082160<span class="w"> </span>line<span class="w">        </span><span class="m">10</span><span class="w">     </span><span class="nv">n_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>len<span class="o">(</span>str<span class="o">(</span>n<span class="o">))</span>
+New<span class="w"> </span>var:.......<span class="w"> </span><span class="nv">n_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
+<span class="m">14</span>:55:00.082252<span class="w"> </span>line<span class="w">        </span><span class="m">11</span><span class="w">     </span><span class="nv">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+New<span class="w"> </span>var:.......<span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="m">14</span>:55:00.082350<span class="w"> </span>line<span class="w">        </span><span class="m">12</span><span class="w">     </span><span class="nv">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>n
+New<span class="w"> </span>var:.......<span class="w"> </span><span class="nv">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">153</span>
+<span class="m">14</span>:55:00.082455<span class="w"> </span>line<span class="w">        </span><span class="m">14</span><span class="w">     </span><span class="k">while</span><span class="w"> </span>temp<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>:
+<span class="m">14</span>:55:00.082562<span class="w"> </span>line<span class="w">        </span><span class="m">15</span><span class="w">         </span><span class="nv">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>temp<span class="w"> </span>%<span class="w"> </span><span class="m">10</span>
+New<span class="w"> </span>var:.......<span class="w"> </span><span class="nv">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
+<span class="m">14</span>:55:00.082650<span class="w"> </span>line<span class="w">        </span><span class="m">16</span><span class="w">         </span><span class="nv">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>digit<span class="w"> </span>**<span class="w"> </span>n_length
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">27</span>
+<span class="m">14</span>:55:00.082765<span class="w"> </span>line<span class="w">        </span><span class="m">17</span><span class="w">         </span>temp<span class="w"> </span>//<span class="o">=</span><span class="w"> </span><span class="m">10</span>
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span>
+<span class="m">14</span>:55:00.082875<span class="w"> </span>line<span class="w">        </span><span class="m">14</span><span class="w">     </span><span class="k">while</span><span class="w"> </span>temp<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>:
+<span class="m">14</span>:55:00.083132<span class="w"> </span>line<span class="w">        </span><span class="m">15</span><span class="w">         </span><span class="nv">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>temp<span class="w"> </span>%<span class="w"> </span><span class="m">10</span>
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
+<span class="m">14</span>:55:00.083300<span class="w"> </span>line<span class="w">        </span><span class="m">16</span><span class="w">         </span><span class="nv">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>digit<span class="w"> </span>**<span class="w"> </span>n_length
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">152</span>
+<span class="m">14</span>:55:00.083507<span class="w"> </span>line<span class="w">        </span><span class="m">17</span><span class="w">         </span>temp<span class="w"> </span>//<span class="o">=</span><span class="w"> </span><span class="m">10</span>
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="m">14</span>:55:00.083765<span class="w"> </span>line<span class="w">        </span><span class="m">14</span><span class="w">     </span><span class="k">while</span><span class="w"> </span>temp<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>:
+<span class="m">14</span>:55:00.083983<span class="w"> </span>line<span class="w">        </span><span class="m">15</span><span class="w">         </span><span class="nv">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>temp<span class="w"> </span>%<span class="w"> </span><span class="m">10</span>
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="m">14</span>:55:00.084080<span class="w"> </span>line<span class="w">        </span><span class="m">16</span><span class="w">         </span><span class="nv">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>digit<span class="w"> </span>**<span class="w"> </span>n_length
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">153</span>
+<span class="m">14</span>:55:00.084177<span class="w"> </span>line<span class="w">        </span><span class="m">17</span><span class="w">         </span>temp<span class="w"> </span>//<span class="o">=</span><span class="w"> </span><span class="m">10</span>
+Modified<span class="w"> </span>var:..<span class="w"> </span><span class="nv">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="m">14</span>:55:00.084507<span class="w"> </span>line<span class="w">        </span><span class="m">14</span><span class="w">     </span><span class="k">while</span><span class="w"> </span>temp<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>:
+<span class="m">14</span>:55:00.084770<span class="w"> </span>line<span class="w">        </span><span class="m">19</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="o">(</span><span class="nv">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>sum<span class="o">)</span>
+<span class="m">14</span>:55:00.085044<span class="w"> </span><span class="k">return</span><span class="w">      </span><span class="m">19</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="o">(</span><span class="nv">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>sum<span class="o">)</span>
+Return<span class="w"> </span>value:..<span class="w"> </span>True
+Elapsed<span class="w"> </span>time:<span class="w"> </span><span class="m">00</span>:00:00.003629
 True
 
-Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+Process<span class="w"> </span>finished<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
 <h4 id="3-using-the-pythons-pdb-debugger">3. Using the Python's pdb debugger</h4>
@@ -270,7 +270,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 <p>When the line above is executed, Python stops and waits for you to tell it what to do next. You’ll see a (Pdb) prompt. This means that you’re now paused in the interactive debugger and can enter a command. I tend to only use 'n' to execute the current statement (step over), 'c' to continue execution until a breakpoint is encountered or 'p <em>expr</em>' to print the value of <em>expr</em>. (There are cheatsheets on the interwebs and you can always type 'h' or 'help' for a list of commands to get further help on).</p>
 <p>This uses the same code as the original, but using Python's pdb debugger:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    input: 153</span>
 <span class="sd">    output: True</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -279,7 +279,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">n</span>
 
     <span class="k">while</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">breakpoint</span><span class="p">()</span>
+        <span class="nb">breakpoint</span><span class="p">()</span>
         <span class="n">digit</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">%</span> <span class="mi">10</span>
         <span class="nb">sum</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">**</span> <span class="n">n_length</span>
         <span class="n">temp</span> <span class="o">//=</span> <span class="mi">10</span>
@@ -290,29 +290,29 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
 <p>The output requires you to instruct the debugger what to do next in terms of stepping through the code: </p>
-<div class="codehilite"><pre><span></span><code>&gt; /Users/anthlis/pycharmprojects/pysnooper/arm_4_pdb.py<span class="o">(</span><span class="m">12</span><span class="o">)</span>is_armstrong<span class="o">()</span>
--&gt; <span class="nv">digit</span> <span class="o">=</span> temp % <span class="m">10</span>
-<span class="o">(</span>Pdb<span class="o">)</span> 
+<div class="codehilite"><pre><span></span><code>&gt;<span class="w"> </span>/Users/anthlis/pycharmprojects/pysnooper/arm_4_pdb.py<span class="o">(</span><span class="m">12</span><span class="o">)</span>is_armstrong<span class="o">()</span>
+-&gt;<span class="w"> </span><span class="nv">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>temp<span class="w"> </span>%<span class="w"> </span><span class="m">10</span>
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>
 </code></pre></div>
 
 <p>At the command prompt is where you enter the instruction of course. I've chosen to enter 'p' several times...</p>
-<div class="codehilite"><pre><span></span><code>-&gt; temp //<span class="o">=</span> <span class="m">10</span>
-<span class="o">(</span>Pdb<span class="o">)</span> p digit
+<div class="codehilite"><pre><span></span><code>-&gt;<span class="w"> </span>temp<span class="w"> </span>//<span class="o">=</span><span class="w"> </span><span class="m">10</span>
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>p<span class="w"> </span>digit
 <span class="m">3</span>
-<span class="o">(</span>Pdb<span class="o">)</span> p sum
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>p<span class="w"> </span>sum
 <span class="m">27</span>
-<span class="o">(</span>Pdb<span class="o">)</span> p temp
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>p<span class="w"> </span>temp
 <span class="m">153</span>
-<span class="o">(</span>Pdb<span class="o">)</span> n
-&gt; /Users/anthlis/pycharmprojects/pysnooper/arm_4_pdb.py<span class="o">(</span><span class="m">10</span><span class="o">)</span>is_armstrong<span class="o">()</span>
--&gt; <span class="k">while</span> temp &gt; <span class="m">0</span>:
-<span class="o">(</span>Pdb<span class="o">)</span> p digit
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>n
+&gt;<span class="w"> </span>/Users/anthlis/pycharmprojects/pysnooper/arm_4_pdb.py<span class="o">(</span><span class="m">10</span><span class="o">)</span>is_armstrong<span class="o">()</span>
+-&gt;<span class="w"> </span><span class="k">while</span><span class="w"> </span>temp<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>:
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>p<span class="w"> </span>digit
 <span class="m">3</span>
-<span class="o">(</span>Pdb<span class="o">)</span> p sum
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>p<span class="w"> </span>sum
 <span class="m">27</span>
-<span class="o">(</span>Pdb<span class="o">)</span> p temp
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>p<span class="w"> </span>temp
 <span class="m">15</span>
-<span class="o">(</span>Pdb<span class="o">)</span> 
+<span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>
 </code></pre></div>
 
 <p>and so on... </p>
@@ -326,7 +326,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 <span class="n">log</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">&#39;Logbook&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">is_armstrong</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    input: 153</span>
 <span class="sd">    output: True</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -346,12 +346,12 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </code></pre></div>
 
 <p>The ouput produces a simple and tidy log output as shown:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.927662<span class="o">]</span> INFO: Logbook: digit: <span class="m">3</span>, sum: <span class="m">27</span>, temp: <span class="m">15</span>
-<span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.928117<span class="o">]</span> INFO: Logbook: digit: <span class="m">5</span>, sum: <span class="m">152</span>, temp: <span class="m">1</span>
-<span class="o">[</span><span class="m">2020</span>-08-16 <span class="m">03</span>:48:39.928214<span class="o">]</span> INFO: Logbook: digit: <span class="m">1</span>, sum: <span class="m">153</span>, temp: <span class="m">0</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="m">2020</span>-08-16<span class="w"> </span><span class="m">03</span>:48:39.927662<span class="o">]</span><span class="w"> </span>INFO:<span class="w"> </span>Logbook:<span class="w"> </span>digit:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span>sum:<span class="w"> </span><span class="m">27</span>,<span class="w"> </span>temp:<span class="w"> </span><span class="m">15</span>
+<span class="o">[</span><span class="m">2020</span>-08-16<span class="w"> </span><span class="m">03</span>:48:39.928117<span class="o">]</span><span class="w"> </span>INFO:<span class="w"> </span>Logbook:<span class="w"> </span>digit:<span class="w"> </span><span class="m">5</span>,<span class="w"> </span>sum:<span class="w"> </span><span class="m">152</span>,<span class="w"> </span>temp:<span class="w"> </span><span class="m">1</span>
+<span class="o">[</span><span class="m">2020</span>-08-16<span class="w"> </span><span class="m">03</span>:48:39.928214<span class="o">]</span><span class="w"> </span>INFO:<span class="w"> </span>Logbook:<span class="w"> </span>digit:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>sum:<span class="w"> </span><span class="m">153</span>,<span class="w"> </span>temp:<span class="w"> </span><span class="m">0</span>
 True
 
-Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+Process<span class="w"> </span>finished<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
 <h3 id="conclusion">Conclusion</h3>
@@ -399,7 +399,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
                     
                     <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/rshell/" class="badge badge-info">Rshell<!-- (1)--></a>
                     
-                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/quickpost%21/" class="badge badge-info">Quickpost!<!-- (1)--></a>
+                    <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/quickpost!/" class="badge badge-info">Quickpost!<!-- (1)--></a>
                     
                     <!--<i class="fas fa-tags text-info"></i> --><a href="/tag/debugging/" class="badge badge-info">Debugging<!-- (1)--></a>
                     
